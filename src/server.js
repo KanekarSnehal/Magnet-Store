@@ -25,7 +25,8 @@ import {
 import { categories } from "./backend/db/categories";
 import { products } from "./backend/db/products";
 import { users } from "./backend/db/users";
-
+import { brands } from "./backend/db/brands";
+import { getBrandHandler } from "./backend/controllers/BrandController";
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
     serializers: {
@@ -38,6 +39,7 @@ export function makeServer({ environment = "development" } = {}) {
       user: Model,
       cart: Model,
       wishlist: Model,
+      brand: Model,
     },
 
     // Runs on the start of the server
@@ -46,6 +48,10 @@ export function makeServer({ environment = "development" } = {}) {
       server.logging = false;
       products.forEach((item) => {
         server.create("product", { ...item });
+      });
+
+      brands.forEach((item) => {
+        server.create("brand", { ...item });
       });
 
       users.forEach((item) =>
@@ -68,6 +74,9 @@ export function makeServer({ environment = "development" } = {}) {
       // categories routes (public)
       this.get("/categories", getAllCategoriesHandler.bind(this));
       this.get("/categories/:categoryId", getCategoryHandler.bind(this));
+
+      // brands
+      this.get("/brands", getBrandHandler.bind(this));
 
       // cart routes (private)
       this.get("/user/cart", getCartItemsHandler.bind(this));
