@@ -1,51 +1,39 @@
-.App {
+/* @import url("https://magnet-ui.netlify.app/magnet.css"); */
+::-webkit-scrollbar {
+  width: var(--size-8);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: var(--size-8);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+.header-container {
+  z-index: 10;
+}
+
+.main-container {
+  grid-area: main;
+  overflow-y: scroll;
+  height: 92vh;
+}
+
+.main-title {
   text-align: center;
+  font-size: 3.5rem;
+  color: var(--secondary-color);
+  margin: 2rem auto 0.5rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #22201c;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-.brand-title {
-  font-size: 3rem;
-  color: #d9d9d9;
-}
-
-.brand-title span {
-  color: #ffde59;
-}
-
-.brand-description {
-  font-size: 1.4rem;
-}
-
-.links {
-  display: flex;
-}
-
-.links a {
-  color: #d9d9d9;
-  font-size: 1.2rem;
-  margin: 1rem;
+.main-description {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  font-size: 2rem;
 }

@@ -1,0 +1,95 @@
+.spacer-3rem {
+  width: 100%;
+  height: 3rem;
+}
+
+.spacer-2rem {
+  width: 100%;
+  height: 2rem;
+}
+
+.spacer-1rem {
+  width: 100%;
+  height: 1rem;
+}
+
+.hero-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: url(../../assets/hero-img.jpg);
+  background-size: cover;
+  padding: 2rem;
+  height: 30rem;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.homepage-container {
+  padding: 0 1rem;
+}
+
+.content {
+  margin: 2rem;
+  text-align: center;
+  color: var(--secondary-lighter);
+  background-color: var(--secondary-dark);
+  width: 30%;
+  height: fit-content;
+  padding: 1rem;
+}
+
+.title-underline {
+  background-color: var(--primary-color);
+  width: 12rem;
+  height: 0.24rem;
+  margin: 0.2rem auto 2rem;
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 2.5rem;
+}
+
+.featured-card-size {
+  width: 30rem;
+  height: 20rem;
+  object-fit: cover;
+}
+
+.featured-brand-size {
+  width: 20rem;
+  height: 20rem;
+  object-fit: cover;
+}
+
+.card-hover {
+  cursor: pointer;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.2s ease, -webkit-transform 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: scale(1.05);
+}
+
+.text-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: var(--size-32);
+  color: var(--secondary-lighter);
+  background-color: var(--secondary-dark);
+  width: fit-content;
+  padding: 0 1rem;
+}
