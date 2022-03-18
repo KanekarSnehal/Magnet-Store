@@ -2,9 +2,11 @@ import React from "react";
 import "./Home.css";
 import { Categories, Brands } from "../../components/index";
 import { Link } from "react-router-dom";
+import { Header } from "../../components/index";
 export function Home() {
   return (
     <div>
+      <Header />
       <main className="main-container">
         <div className="hero-container">
           <div className="content">

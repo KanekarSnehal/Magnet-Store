@@ -37,3 +37,53 @@
   margin: 0 auto;
   font-size: 2rem;
 }
+
+.title-underline {
+  background-color: var(--primary-color);
+  width: 12rem;
+  height: 0.24rem;
+  margin: 0.2rem auto 2rem;
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 2.5rem;
+}
+
+.spacer-3rem {
+  width: 100%;
+  height: 3rem;
+}
+
+.spacer-2rem {
+  width: 100%;
+  height: 2rem;
+}
+
+.spacer-1rem {
+  width: 100%;
+  height: 1rem;
+}
+
+.card-hover {
+  cursor: pointer;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.2s ease, -webkit-transform 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: scale(1.05);
+}
+
+.card-rating {
+  padding: 0.5rem 1rem;
+}
+
+.rating-icon {
+  color: var(--yellow-color);
+}

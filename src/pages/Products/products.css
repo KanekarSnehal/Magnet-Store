@@ -1,0 +1,9 @@
+.products-page {
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
+  grid-template-rows: 0.2fr 5fr 0.3fr;
+  grid-template-areas:
+    "header header"
+    "filter main"
+    "filter main";
+}
