@@ -20,6 +20,18 @@ const filterProducts = (filterState, products) => {
     .filter((product) => Number(ratings) <= Number(product.ratings));
 };
 
+const searchByKey = (filterState, products) => {
+  const { search } = filterState;
+  return search == null
+    ? products
+    : products.filter(
+        (product) =>
+          product.title.toLowerCase().includes(search.toLowerCase()) ||
+          product.brandName.toLowerCase().includes(search.toLowerCase()) ||
+          product.categoryName.toLowerCase().includes(search.toLowerCase())
+      );
+};
+
 const filterByBrandsAndCategories = (filterState, products) => {
   const { categories, brands } = filterState;
   const categoriesProduct =
@@ -37,4 +49,10 @@ const filterByBrandsAndCategories = (filterState, products) => {
 
   return brandsProduct;
 };
-export { sortByPrice, filterProducts, filterByBrandsAndCategories };
+
+export {
+  sortByPrice,
+  filterProducts,
+  filterByBrandsAndCategories,
+  searchByKey,
+};

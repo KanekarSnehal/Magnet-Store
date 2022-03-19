@@ -6,5 +6,6 @@ const filtersInitialState = {
   categories: [],
   brands: [],
   ratings: null,
+  search: null,
 };
 export { filtersInitialState };

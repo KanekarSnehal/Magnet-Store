@@ -6,6 +6,7 @@ import {
   sortByPrice,
   filterProducts,
   filterByBrandsAndCategories,
+  searchByKey,
 } from "../utilities/index";
 import { useCategoriesAndBrandsAndProducts } from "../Hooks/useCategoriesAndBrandsAndProducts";
 
@@ -23,8 +24,10 @@ const FilterProvider = ({ children }) => {
   const finalFilteredProducts = getFinalProducts(
     sortByPrice,
     filterProducts,
-    filterByBrandsAndCategories
+    filterByBrandsAndCategories,
+    searchByKey
   )(filterState, products);
+
   return (
     <FilterContext.Provider
       value={{ filterState, filterDispatch, finalFilteredProducts }}

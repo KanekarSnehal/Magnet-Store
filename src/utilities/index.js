@@ -3,5 +3,6 @@ export {
   sortByPrice,
   filterProducts,
   filterByBrandsAndCategories,
+  searchByKey,
 } from "./filterUtilities";
 export { filtersInitialState } from "./filtersInitialState";

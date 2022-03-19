@@ -1,8 +1,9 @@
 import React from "react";
-// import icon from "../../assets/icon.png";
 import { Link } from "react-router-dom";
+import { useFilter } from "../../context/index";
 
 export function Header() {
+  const { filterDispatch } = useFilter();
   return (
     <header className="header-container">
       <Link to="/" className="logo-container">
@@ -31,6 +32,9 @@ export function Header() {
           name="searchbar"
           id="searchbar"
           placeholder="Search products..."
+          onChange={(e) =>
+            filterDispatch({ type: "SEARCH_BY_KEY", payload: e.target.value })
+          }
         />
       </div>
 
