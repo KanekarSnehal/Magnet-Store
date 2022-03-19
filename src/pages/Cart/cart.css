@@ -1,0 +1,36 @@
+.cart-container {
+  padding: 1rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.cart-item-container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding: 0 1rem;
+}
+
+.horizontal-card-container .btn-container .btn {
+  width: fit-content;
+  margin: 0.2rem;
+}
+
+.cart-price-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  margin: 1rem;
+  position: sticky;
+  top: 10vh;
+  width: 30%;
+  height: fit-content;
+  box-shadow: 3px 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.price-items {
+  display: flex;
+  justify-content: space-between;
+}
