@@ -33,6 +33,8 @@ const FilterReducer = (filterState, filterAction) => {
       };
     case "FAST_DELIVERY_ONLY":
       return { ...filterState, isFastDelivery: !filterState.isFastDelivery };
+    case "SEARCH_BY_KEY":
+      return { ...filterState, search: filterAction.payload };
     case "CLEAR_ALL":
       return { ...filtersInitialState };
   }
