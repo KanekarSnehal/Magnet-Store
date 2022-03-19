@@ -1,8 +1,9 @@
 import React from "react";
-import { useCategoriesAndBrands } from "../../Hooks/useCategoriesAndBrands";
+import { useCategoriesAndBrandsAndProducts } from "../../Hooks/useCategoriesAndBrandsAndProducts";
 
 export function Categories() {
-  const { categories } = useCategoriesAndBrands();
+  const { categoriesData } = useCategoriesAndBrandsAndProducts();
+  console.log(categoriesData);
   return (
     <div>
       <h2 className="text-center secondary-text-color">Featured Categories</h2>
@@ -10,7 +11,7 @@ export function Categories() {
       <div className="spacer-1rem "></div>
 
       <div className="flex-row">
-        {categories.map((category) => {
+        {categoriesData.map((category) => {
           return (
             <div
               className="featured-card-size card-hover position-relative"

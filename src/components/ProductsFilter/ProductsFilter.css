@@ -1,0 +1,44 @@
+.filter-container {
+  grid-area: filter;
+  overflow-y: auto;
+  height: 92vh;
+  padding: 1rem;
+}
+
+.filter-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.filter-divider-line {
+  background-color: var(--secondary-lighter);
+  width: 100%;
+  height: 1.5px;
+}
+
+.filter-section {
+  margin: 1rem;
+}
+
+.filter-section-title {
+  margin-bottom: 0.2rem;
+}
+
+.form-label {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.form-label:hover {
+  color: var(--primary-color);
+}
+.slider {
+  width: 100%;
+}
+
+.slider-datalist {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
