@@ -1,9 +1,9 @@
 import React from "react";
-import { useCategoriesAndBrandsAndProducts } from "../../Hooks/useCategoriesAndBrandsAndProducts";
-import { useFilter } from "../../context/index";
+import { useFilter, useCart } from "../../context/index";
+
 export default function ProductsCards() {
   const { finalFilteredProducts } = useFilter();
-
+  const { cartDispatch } = useCart();
   return (
     <>
       {finalFilteredProducts.length === 0 ? (
@@ -37,7 +37,12 @@ export default function ProductsCards() {
 
                 <div class="btn-container p-sm">
                   <a href="#" class="mr-16 ">
-                    <button class="btn primary-btn">
+                    <button
+                      class="btn primary-btn"
+                      onClick={() =>
+                        cartDispatch({ type: "ADD_TO_cART", payload: product })
+                      }
+                    >
                       <i class="fas fa-shopping-cart mr-16 "></i>Add to cart
                     </button>
                   </a>
