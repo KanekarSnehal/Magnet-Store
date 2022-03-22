@@ -1,9 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useFilter } from "../../context/index";
+import { useAuthContext } from "../../context/index";
+import { authActionsConstants } from "../../reducer/index";
+import { useNavigate } from "react-router-dom";
 
 export function Header() {
   const { filterDispatch } = useFilter();
+  const { isAuthenticated, authDispatch } = useAuthContext();
+
+  const navigate = useNavigate();
+
+  const logoutHandler = (e) => {
+    authDispatch({ type: "USER_LOGOUT" });
+    localStorage.removeItem("token");
+  };
+
   return (
     <header className="header-container">
       <Link to="/" className="logo-container">
@@ -39,7 +51,7 @@ export function Header() {
       </div>
 
       <div className="header-icons ml-auto mr-16">
-        <Link to="/signup">
+        <Link to={"/signup"}>
           <i
             href="/pages/sign-up.html"
             class="far fa-user number-badge-iframe"
@@ -47,7 +59,7 @@ export function Header() {
         </Link>
 
         <div className="position-relative">
-          <Link to="/whishlist">
+          <Link to={"/wishlist"}>
             <i className="far fa-heart number-badge-iframe"></i>
           </Link>
           <div className="badge badge-status-busy badge-md-size badge-number">
@@ -56,14 +68,25 @@ export function Header() {
         </div>
 
         <div className="position-relative">
-          <Link to="/cart">
+          <Link to={"/cart"}>
             <i className="fas fa-shopping-bag number-badge-iframe"></i>
           </Link>
           <div className="badge badge-status-busy badge-md-size badge-number">
             4
           </div>
         </div>
-        <button className="btn primary-btn">Logout</button>
+        {isAuthenticated ? (
+          <button className="btn primary-btn" onClick={logoutHandler}>
+            Logout
+          </button>
+        ) : (
+          <button
+            className="btn primary-btn"
+            onClick={() => navigate("/login")}
+          >
+            Login
+          </button>
+        )}
       </div>
     </header>
   );
