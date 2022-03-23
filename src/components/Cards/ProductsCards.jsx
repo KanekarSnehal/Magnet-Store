@@ -1,9 +1,11 @@
 import React from "react";
-import { useFilter, useCart } from "../../context/index";
+import { useFilter, useCart, useWishlist } from "../../context/index";
+import { addToWishlist, removeFromWishlist } from "../../api-calls/index";
 
 export default function ProductsCards() {
   const { finalFilteredProducts } = useFilter();
   const { cartDispatch } = useCart();
+  const { wishlist, wishlistDispatch } = useWishlist();
   return (
     <>
       {finalFilteredProducts.length === 0 ? (
@@ -15,7 +17,21 @@ export default function ProductsCards() {
               <img class="card-image" src={product.img} alt="card image" />
 
               <div class="badge   badge-number ">
-                <a className="far fa-heart number-badge-iframe badge-lg-size"></a>
+                {wishlist.find(
+                  (wishlistItem) => wishlistItem._id === product._id
+                ) ? (
+                  <a
+                    className="fas fa-heart number-badge-iframe badge-lg-size"
+                    onClick={() =>
+                      removeFromWishlist(product._id, wishlistDispatch)
+                    }
+                  ></a>
+                ) : (
+                  <a
+                    className="far fa-heart number-badge-iframe badge-lg-size"
+                    onClick={() => addToWishlist(product, wishlistDispatch)}
+                  ></a>
+                )}
               </div>
 
               <div class="card-content">

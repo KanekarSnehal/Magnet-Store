@@ -2,12 +2,13 @@ import React from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useFilter } from "../../context/index";
 import { useAuthContext } from "../../context/index";
-import { authActionsConstants } from "../../reducer/index";
 import { useNavigate } from "react-router-dom";
+import { useWishlist } from "../../context/index";
 
 export function Header() {
   const { filterDispatch } = useFilter();
   const { isAuthenticated, authDispatch } = useAuthContext();
+  const { wishlist } = useWishlist();
 
   const navigate = useNavigate();
 
@@ -63,7 +64,7 @@ export function Header() {
             <i className="far fa-heart number-badge-iframe"></i>
           </Link>
           <div className="badge badge-status-busy badge-md-size badge-number">
-            4
+            {wishlist.length}
           </div>
         </div>
 
