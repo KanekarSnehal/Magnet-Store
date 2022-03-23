@@ -1,6 +1,6 @@
 import React from "react";
 import { useFilter, useCart, useWishlist } from "../../context/index";
-import { addToWishlist, removeFromWishlist } from "../../ApiCalls/index";
+import { addToWishlist, removeFromWishlist } from "../../api-calls/index";
 
 export default function ProductsCards() {
   const { finalFilteredProducts } = useFilter();

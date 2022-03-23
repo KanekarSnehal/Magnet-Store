@@ -1,5 +1,5 @@
 import { useWishlist } from "../../context/index";
-import { removeFromWishlist } from "../../ApiCalls/index";
+import { removeFromWishlist } from "../../api-calls/index";
 
 export const WishlistItems = () => {
   const { wishlist, wishlistDispatch } = useWishlist();
@@ -15,11 +15,10 @@ export const WishlistItems = () => {
 
             <div class="card-content">
               <h6 class="card-title">{wishlistItem.title}</h6>
-              {/* <p class="card-info p-sm">Nitori snack bowls that may be...</p> */}
               <p class="text-bold-weight p-sm">
                 Rs.{wishlistItem.price}
                 <span class="text-light-weight">
-                  <span class="text-strike-through">Rs.999</span>
+                  <span class="text-strike-through mx-8">Rs.999</span>
                 </span>
                 <span class="primary-text-color">{wishlistItem.discount}%</span>
                 <span className="card-rating">
