@@ -3,13 +3,13 @@ import { Link, Navigate } from "react-router-dom";
 import { useFilter } from "../../context/index";
 import { useAuthContext } from "../../context/index";
 import { useNavigate } from "react-router-dom";
-import { useWishlist } from "../../context/index";
+import { useWishlist, useCart } from "../../context/index";
 
 export function Header() {
   const { filterDispatch } = useFilter();
   const { isAuthenticated, authDispatch } = useAuthContext();
   const { wishlist } = useWishlist();
-
+  const { cart, cartDispatch } = useCart();
   const navigate = useNavigate();
 
   const logoutHandler = (e) => {
@@ -73,7 +73,7 @@ export function Header() {
             <i className="fas fa-shopping-bag number-badge-iframe"></i>
           </Link>
           <div className="badge badge-status-busy badge-md-size badge-number">
-            4
+            {cart.length}
           </div>
         </div>
         {isAuthenticated ? (

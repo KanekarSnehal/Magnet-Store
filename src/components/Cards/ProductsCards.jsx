@@ -1,11 +1,23 @@
 import React from "react";
-import { useFilter, useCart, useWishlist } from "../../context/index";
-import { addToWishlist, removeFromWishlist } from "../../api-calls/index";
+import {
+  useFilter,
+  useCart,
+  useWishlist,
+  useAuthContext,
+} from "../../context/index";
+import {
+  addToWishlist,
+  removeFromWishlist,
+  addToCart,
+} from "../../api-calls/index";
+import { useNavigate } from "react-router-dom";
 
 export default function ProductsCards() {
   const { finalFilteredProducts } = useFilter();
-  const { cartDispatch } = useCart();
   const { wishlist, wishlistDispatch } = useWishlist();
+  const { isAuthenticated } = useAuthContext();
+  const { cart, cartDispatch } = useCart();
+  const navigate = useNavigate();
   return (
     <>
       {finalFilteredProducts.length === 0 ? (
@@ -29,7 +41,11 @@ export default function ProductsCards() {
                 ) : (
                   <a
                     className="far fa-heart number-badge-iframe badge-lg-size"
-                    onClick={() => addToWishlist(product, wishlistDispatch)}
+                    onClick={() => {
+                      isAuthenticated
+                        ? addToWishlist(product, wishlistDispatch)
+                        : navigate("/login");
+                    }}
                   ></a>
                 )}
               </div>
@@ -38,9 +54,13 @@ export default function ProductsCards() {
                 <h6 class="card-title">{product.title}</h6>
                 <p class="card-info p-sm">{product.description}</p>
                 <p class="text-bold-weight">
-                  Rs. {product.price}
+                  Rs.
+                  {Number(product.price) -
+                    (Number(product.price) * Number(product.discount)) / 100}
                   <span class="text-light-weight">
-                    <span class="text-strike-through mx-8">Rs.999</span>
+                    <span class="text-strike-through mx-8">
+                      Rs. {product.price}
+                    </span>
                   </span>
                   <span class="primary-text-color">
                     {product.discount}% OFF
@@ -52,15 +72,26 @@ export default function ProductsCards() {
                 </p>
 
                 <div class="btn-container p-sm">
-                  <a href="#" class="mr-16 ">
-                    <button
-                      class="btn primary-btn"
-                      onClick={() =>
-                        cartDispatch({ type: "ADD_TO_cART", payload: product })
-                      }
-                    >
-                      <i class="fas fa-shopping-cart mr-16 "></i>Add to cart
-                    </button>
+                  <a class="mr-16 ">
+                    {cart.find((cartItem) => cartItem._id === product._id) ? (
+                      <button
+                        class="btn primary-btn"
+                        onClick={() => navigate("/cart")}
+                      >
+                        Go to Cart
+                      </button>
+                    ) : (
+                      <button
+                        class="btn primary-btn"
+                        onClick={() => {
+                          isAuthenticated
+                            ? addToCart(product, cartDispatch)
+                            : navigate("/login");
+                        }}
+                      >
+                        <i class="fas fa-shopping-cart mr-16 "></i>Add to cart
+                      </button>
+                    )}
                   </a>
                 </div>
               </div>
