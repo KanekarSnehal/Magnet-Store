@@ -13,12 +13,10 @@ export const addToWishlist = async (product, wishlistDispatch) => {
       { product },
       config
     );
-    if (response.status === 201) {
-      wishlistDispatch({
-        type: ADD_TO_WISHLIST,
-        payload: response.data.wishlist,
-      });
-    }
+    wishlistDispatch({
+      type: ADD_TO_WISHLIST,
+      payload: response.data.wishlist,
+    });
   } catch (error) {
     wishlistDispatch({
       type: ADD_TO_WISHLIST_FAILED,

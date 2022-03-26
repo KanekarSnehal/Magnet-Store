@@ -10,12 +10,10 @@ export const removeFromWishlist = async (id, wishlistDispatch) => {
       headers: { authorization: localStorage.getItem("token") },
     };
     const response = await axios.delete(`/api/user/wishlist/${id}`, config);
-    if (response.status === 200) {
-      wishlistDispatch({
-        type: REMOVE_FROM_WISHLIST,
-        payload: response.data.wishlist,
-      });
-    }
+    wishlistDispatch({
+      type: REMOVE_FROM_WISHLIST,
+      payload: response.data.wishlist,
+    });
   } catch (error) {
     wishlistDispatch({
       type: REMOVE_FROM_WISHLIST_FAILED,
