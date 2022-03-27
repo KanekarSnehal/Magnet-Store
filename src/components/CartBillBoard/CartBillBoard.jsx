@@ -7,8 +7,7 @@ export function CartBillBoard() {
   const finalDiscountOnMRP = cart.reduce(
     (prevDiscount, currCartItem) =>
       prevDiscount +
-      (Number(currCartItem.price) -
-        (Number(currCartItem.price) * Number(currCartItem.discount)) / 100),
+      (Number(currCartItem.price) * Number(currCartItem.discount)) / 100,
     0
   );
   const totalMRP = cart.reduce(
