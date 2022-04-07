@@ -1,9 +1,13 @@
 import React from "react";
 import { useCategoriesAndBrandsAndProducts } from "../../Hooks/useCategoriesAndBrandsAndProducts";
+import { useNavigate } from "react-router-dom";
+import { useFilter } from "../../context/index";
 
 export function Categories() {
   const { categoriesData } = useCategoriesAndBrandsAndProducts();
-  console.log(categoriesData);
+  const navigate = useNavigate();
+  const { filterState, filterDispatch } = useFilter();
+
   return (
     <div>
       <h2 className="text-center secondary-text-color">Featured Categories</h2>
@@ -13,9 +17,16 @@ export function Categories() {
       <div className="flex-row">
         {categoriesData.map((category) => {
           return (
-            <div
+            <li
               className="featured-card-size card-hover position-relative"
               key={category._id}
+              onClick={() => {
+                filterDispatch({
+                  type: "CATEGORY",
+                  payload: category.categoryName.toLowerCase(),
+                });
+                navigate("/products");
+              }}
             >
               <div>
                 <img
@@ -27,7 +38,7 @@ export function Categories() {
               <div className="text-bottom text-bold-weight">
                 {category.categoryName}
               </div>
-            </div>
+            </li>
           );
         })}
       </div>

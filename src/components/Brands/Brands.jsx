@@ -1,8 +1,13 @@
 import React from "react";
 import { useCategoriesAndBrandsAndProducts } from "../../Hooks/useCategoriesAndBrandsAndProducts";
+import { useNavigate } from "react-router-dom";
+import { useFilter } from "../../context/index";
 
 export function Brands() {
   const { brandsData } = useCategoriesAndBrandsAndProducts();
+  const navigate = useNavigate();
+  const { filterState, filterDispatch } = useFilter();
+
   return (
     <div>
       <h2 className="text-center secondary-text-color">Featured Brands</h2>
@@ -11,9 +16,15 @@ export function Brands() {
       <div className="flex-row">
         {brandsData.map((brand) => {
           return (
-            <div className="featured-brand-size card-hover">
+            <li
+              className="featured-brand-size card-hover"
+              onClick={() => {
+                filterDispatch({ type: "BRAND", payload: brand.brandName });
+                navigate("/products");
+              }}
+            >
               <img className="card-image" src={brand.img} alt="card image" />
-            </div>
+            </li>
           );
         })}
       </div>

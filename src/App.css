@@ -87,3 +87,17 @@
 .rating-icon {
   color: var(--yellow-color);
 }
+
+
+.pos-top-right{
+  top: 0rem;
+  right: 0rem;
+}
+
+li{
+  list-style: none;
+}
+
+.opacity{
+  opacity: 0.6;
+}

@@ -14,7 +14,7 @@ const filterProducts = (filterState, products) => {
   const { includeOutOfStock, isFastDelivery, priceRange, ratings } =
     filterState;
   return products
-    .filter((product) => (includeOutOfStock ? product.inStock : product))
+    .filter((product) => (includeOutOfStock ? product : product.inStock))
     .filter((product) => (isFastDelivery ? product.fastDelivery : product))
     .filter((product) => Number(priceRange) >= Number(product.price))
     .filter((product) => Number(ratings) <= Number(product.ratings));
