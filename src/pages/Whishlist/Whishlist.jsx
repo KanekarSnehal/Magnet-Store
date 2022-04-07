@@ -11,12 +11,6 @@ export function Whishlist() {
       <main class="main-container">
         <h2 class="text-center secondary-text-color">My Wishlist</h2>
         <div class="title-underline"></div>
-
-        <p class="text-center">
-          Total Items:{" "}
-          <span class="secondary-text-color"> {wishlist.length} items</span>
-        </p>
-
         <div class="flex-row">
           <WishlistItems />
         </div>

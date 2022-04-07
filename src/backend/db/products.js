@@ -66,7 +66,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Natura Bowls Black",
-    inStock: false,
+    inStock: true,
     fastDelivery: false,
     categoryName: "Bowls",
     brandName: "Clay Craft",
@@ -94,7 +94,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Red Wine Glass Set of 2",
-    inStock: false,
+    inStock: true,
     fastDelivery: true,
     categoryName: "Glassware",
     brandName: "Treo",
@@ -108,7 +108,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Classic Plates",
-    inStock: false,
+    inStock: true,
     fastDelivery: false,
     categoryName: "Plates",
     brandName: "Milton",
@@ -122,7 +122,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Siena Dinner Plate",
-    inStock: false,
+    inStock: true,
     fastDelivery: true,
     categoryName: "Dinner Set",
     brandName: "Borosil",

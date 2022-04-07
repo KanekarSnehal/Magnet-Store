@@ -23,9 +23,10 @@
   flex-direction: column;
   padding: 1.5rem;
   margin: 1rem;
-  position: sticky;
-  top: 10vh;
-  width: 30%;
+  position: fixed;
+  top: 25vh;
+  right: 10vw;
+  width: 25%;
   height: fit-content;
   box-shadow: 3px 3px 10px rgb(0 0 0 / 0.2);
 }

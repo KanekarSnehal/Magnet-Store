@@ -26,18 +26,29 @@ export function Header() {
       <div className="header-links mx-auto">
         <ul className="list-style-none inline-list">
           <li className="secondary-text-color mr-64">
-            <Link to="/" className="active-link">
+            <Link
+              to="/"
+              className={location.pathname === "/" ? "active-link" : ""}
+            >
               Home
             </Link>
           </li>
           <li className="secondary-text-color mr-64">
-            <Link to="/products">Products</Link>
+            <Link
+              to="/products"
+              className={location.pathname === "/products" ? "active-link" : ""}
+            >
+              Products
+            </Link>
           </li>
         </ul>
       </div>
 
       <div className="search-input mx-auto">
-        <a className="fas fa-search search-icon"></a>
+        <i
+          className="fas fa-search search-icon"
+          onClick={() => navigate("/products")}
+        ></i>
         <label for="searchbar"></label>
         <input
           className="input-round input-sm"
@@ -61,7 +72,13 @@ export function Header() {
 
         <div className="position-relative">
           <Link to={"/wishlist"}>
-            <i className="far fa-heart number-badge-iframe"></i>
+            <i
+              className={
+                location.pathname === "/wishlist"
+                  ? "far fa-heart number-badge-iframe active-icons"
+                  : "far fa-heart number-badge-iframe"
+              }
+            ></i>
           </Link>
           <div className="badge badge-status-busy badge-md-size badge-number">
             {wishlist.length}
@@ -70,7 +87,13 @@ export function Header() {
 
         <div className="position-relative">
           <Link to={"/cart"}>
-            <i className="fas fa-shopping-bag number-badge-iframe"></i>
+            <i
+              className={
+                location.pathname === "/cart"
+                  ? "fas fa-shopping-bag number-badge-iframe active-icons"
+                  : "fas fa-shopping-bag number-badge-iframe"
+              }
+            ></i>
           </Link>
           <div className="badge badge-status-busy badge-md-size badge-number">
             {cart.length}
