@@ -38,7 +38,26 @@ export function Login() {
       });
     }
   };
-
+  const handleTestLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post(`/api/auth/login`, {
+        email: "test@gmail.com",
+        password: "test@123",
+      });
+      localStorage.setItem("token", data.encodedToken);
+      authDispatch({
+        type: authActionsConstants.GET_USER_DETAILS,
+        payload: data.foundUser.firstName,
+      });
+      navigate("/");
+    } catch (error) {
+      authDispatch({
+        type: authActionsConstants.USER_LOGIN_FAILURE,
+        payload: `Invalid email or password, please signup if you dont have an account `,
+      });
+    }
+  };
   return (
     <div>
       <Header />
@@ -72,6 +91,13 @@ export function Login() {
             <a href="#" class="link-btn my-8">
               Forgot password?
             </a>
+            <button
+              className="btn outline-primary-btn text-center"
+              type="submit"
+              onClick={handleTestLogin}
+            >
+              LOGIN WITH TEST CREDENTIALS
+            </button>
             <button
               class="btn primary-btn text-center"
               type="submit"
