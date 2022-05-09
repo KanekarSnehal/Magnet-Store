@@ -12,16 +12,16 @@ export function Cart() {
       <main class="main-container">
         <h2 class="text-center secondary-text-color">My Cart</h2>
         <div class="title-underline"></div>
-        <div class="cart-container">
-          {cart.length === 0 ? (
-            <h1>No products added...</h1>
-          ) : (
-            <>
+        {cart.length === 0 ? (
+          <h1 class="text-center">No products added...</h1>
+        ) : (
+          <>
+            <div class="cart-container">
               <CartItems />
               <CartBillBoard />
-            </>
-          )}
-        </div>
+            </div>
+          </>
+        )}
       </main>
     </>
   );
