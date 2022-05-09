@@ -1,9 +1,10 @@
-import React from "react";
-import { Link, Navigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { useFilter } from "../../context/index";
 import { useAuthContext } from "../../context/index";
 import { useNavigate } from "react-router-dom";
 import { useWishlist, useCart } from "../../context/index";
+import "./header.css";
 
 export function Header() {
   const { filterDispatch } = useFilter();
@@ -11,7 +12,7 @@ export function Header() {
   const { wishlist } = useWishlist();
   const { cart, cartDispatch } = useCart();
   const navigate = useNavigate();
-
+  const [showSideMenu, setShowSideMenu] = useState(false);
   const logoutHandler = (e) => {
     authDispatch({ type: "USER_LOGOUT" });
     localStorage.removeItem("token");
@@ -25,7 +26,7 @@ export function Header() {
       </Link>
       <div className="header-links mx-auto">
         <ul className="list-style-none inline-list">
-          <li className="secondary-text-color mr-64">
+          <li className="secondary-text-color mx-16">
             <Link
               to="/"
               className={location.pathname === "/" ? "active-link" : ""}
@@ -33,7 +34,7 @@ export function Header() {
               Home
             </Link>
           </li>
-          <li className="secondary-text-color mr-64">
+          <li className="secondary-text-color mx-16">
             <Link
               to="/products"
               className={location.pathname === "/products" ? "active-link" : ""}
@@ -44,12 +45,12 @@ export function Header() {
         </ul>
       </div>
 
-      <div className="search-input mx-auto">
+      <div className="search-input mx-16">
         <i
           className="fas fa-search search-icon"
           onClick={() => navigate("/products")}
         ></i>
-        <label for="searchbar"></label>
+        <label htmlFor="searchbar"></label>
         <input
           className="input-round input-sm"
           type="text"
@@ -62,7 +63,7 @@ export function Header() {
         />
       </div>
 
-      <div className="header-icons ml-auto mr-16">
+      <div className="header-icons ml-auto ">
         <Link to={"/signup"}>
           <i
             href="/pages/sign-up.html"
@@ -112,6 +113,70 @@ export function Header() {
           </button>
         )}
       </div>
+
+      {showSideMenu && (
+        <div className="side-menu">
+          <i
+            className="bx bx-x number-badge-iframe badge mx-8 my-8"
+            onClick={() => setShowSideMenu(!showSideMenu)}
+          ></i>
+          <div className="side-menu-content">
+            <Link to={"/"}>
+              <i
+                className={
+                  location.pathname === "/"
+                    ? "bx bx-home number-badge-iframe active-icons"
+                    : "bx bx-home number-badge-iframe "
+                }
+              >
+                Home
+              </i>
+            </Link>
+            <NavLink to={"/signup"}>
+              <i className={"far fa-user number-badge-iframe"}>Profile</i>
+            </NavLink>
+            <div className="position-relative">
+              <Link to={"/wishlist"}>
+                <i
+                  className={
+                    location.pathname === "/wishlist"
+                      ? "bx bx-heart number-badge-iframe active-icons"
+                      : "bx bx-heart number-badge-iframe"
+                  }
+                >
+                  Wishlist
+                </i>
+              </Link>
+              <div className="badge badge-status-busy badge-md-size badge-number">
+                {wishlist.length}
+              </div>
+            </div>
+
+            <div className="position-relative">
+              <Link to={"/cart"}>
+                <i
+                  className={
+                    location.pathname === "/cart"
+                      ? "bx bx-cart-alt number-badge-iframe active-icons"
+                      : "bx bx-cart-alt number-badge-iframe"
+                  }
+                >
+                  Cart
+                </i>
+              </Link>
+
+              <div className="badge badge-status-busy badge-md-size badge-number">
+                {cart.length}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <i
+        className="bx bx-menu number-badge-iframe ml-auto hamburger-menu"
+        onClick={() => setShowSideMenu(!showSideMenu)}
+      ></i>
     </header>
   );
 }
