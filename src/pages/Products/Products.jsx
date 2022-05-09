@@ -10,7 +10,7 @@ export function Products() {
       <Header />
       <ProductsFilter />
       <main class="main-container">
-        <div class="flex-row">
+        <div class="products-container">
           <ProductsCards />
         </div>
       </main>

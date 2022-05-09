@@ -33,21 +33,21 @@ export default function ProductsCards() {
                   {wishlist.find(
                     (wishlistItem) => wishlistItem._id === product._id
                   ) ? (
-                    <a
+                    <i
                       className="fas fa-heart number-badge-iframe badge-lg-size"
                       onClick={() =>
                         removeFromWishlist(product._id, wishlistDispatch)
                       }
-                    ></a>
+                    ></i>
                   ) : (
-                    <a
+                    <i
                       className="far fa-heart number-badge-iframe badge-lg-size"
                       onClick={() => {
                         isAuthenticated
                           ? addToWishlist(product, wishlistDispatch)
                           : navigate("/login");
                       }}
-                    ></a>
+                    ></i>
                   )}
                 </div>
 
