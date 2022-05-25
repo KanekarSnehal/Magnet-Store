@@ -61,36 +61,33 @@ export function Login() {
   return (
     <div>
       <Header />
-      <main class="main-container">
-        <div class="form-container">
-          <h4 class="secondary-text-color  text-center">LOG IN</h4>
-          <div class="title-underline"></div>
+      <main className="main-container">
+        <div className="form-container">
+          <h4 className="secondary-text-color  text-center">LOG IN</h4>
+          <div className="title-underline"></div>
 
-          <form class="form-col">
-            <div class="row">
+          <form className="form-col">
+            <div className="row">
               <input
-                class="form-field"
+                className="form-field"
                 type="email"
                 placeholder="Enter your email here"
                 name="email"
-                required
                 onChange={onChangeHandler}
+                required
               />
             </div>
 
-            <div class="row">
+            <div className="row">
               <input
-                class="form-field"
+                className="form-field"
                 type="password"
                 placeholder="Enter your password"
                 name="password"
-                required
                 onChange={onChangeHandler}
+                required
               />
             </div>
-            <a href="#" class="link-btn my-8">
-              Forgot password?
-            </a>
             <button
               className="btn outline-primary-btn text-center"
               type="submit"
@@ -99,16 +96,16 @@ export function Login() {
               LOGIN WITH TEST CREDENTIALS
             </button>
             <button
-              class="btn primary-btn text-center"
+              className="btn primary-btn text-center"
               type="submit"
               onClick={postLoginData}
             >
               LOGIN
             </button>
 
-            <div class="py-16">
+            <div className="py-16">
               Not a user yet?
-              <Link to="/signup" class="link-btn">
+              <Link to="/signup" className="link-btn">
                 Create your account
               </Link>
             </div>

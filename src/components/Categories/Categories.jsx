@@ -15,32 +15,26 @@ export function Categories() {
       <div className="spacer-1rem "></div>
 
       <div className="flex-row">
-        {categoriesData.map((category) => {
-          return (
-            <li
-              className="featured-card-size card-hover position-relative"
-              key={category._id}
-              onClick={() => {
-                filterDispatch({
-                  type: "CATEGORY",
-                  payload: category.categoryName.toLowerCase(),
-                });
-                navigate("/products");
-              }}
-            >
-              <div>
-                <img
-                  className="card-image"
-                  src={category.img}
-                  alt="card image"
-                />
-              </div>
-              <div className="text-bottom text-bold-weight">
-                {category.categoryName}
-              </div>
-            </li>
-          );
-        })}
+        {categoriesData.map((category) => (
+          <li
+            className="featured-card-size card-hover position-relative"
+            key={category._id}
+            onClick={() => {
+              filterDispatch({
+                type: "CATEGORY",
+                payload: category.categoryName.toLowerCase(),
+              });
+              navigate("/products");
+            }}
+          >
+            <div>
+              <img className="card-image" src={category.img} alt="card image" />
+            </div>
+            <div className="text-bottom text-bold-weight">
+              {category.categoryName}
+            </div>
+          </li>
+        ))}
       </div>
     </div>
   );

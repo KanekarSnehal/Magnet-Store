@@ -1,7 +1,6 @@
 .filter-container {
   grid-area: filter;
   overflow-y: auto;
-  height: 92vh;
   padding: 1rem;
 }
 
@@ -9,16 +8,13 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  flex-wrap: wrap;
 }
 
 .filter-divider-line {
   background-color: var(--secondary-lighter);
   width: 100%;
   height: 1.5px;
-}
-
-.filter-section {
-  margin: 1rem;
 }
 
 .filter-section-title {

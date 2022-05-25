@@ -21,35 +21,35 @@ export function CartBillBoard() {
   return (
     <>
       {cart.length !== 0 && (
-        <div class="cart-price-container">
+        <div className="cart-price-container">
           <p>COUPONS</p>
-          <button class="btn outline-secondary-btn">
-            <i class="fas fa-tag mr-16"></i>Apply Coupon
+          <button className="btn outline-secondary-btn">
+            <i className="fas fa-tag mr-16"></i>Apply Coupon
           </button>
-          <div class="text-bold-weight my-16">
+          <div className="text-bold-weight my-16">
             PRICE DETAILS: ({cart.length} items)
           </div>
-          <div class="price-items">
+          <div className="price-items">
             <p>Total MRP</p>
             <p>Rs.{totalMRP}</p>
           </div>
-          <div class="price-items">
+          <div className="price-items">
             <p>Discount on MRP</p>
-            <p class="primary-text-color">-Rs.{finalDiscountOnMRP}</p>
+            <p className="primary-text-color">-Rs.{finalDiscountOnMRP}</p>
           </div>
-          <div class="price-items">
+          <div className="price-items">
             <p>Convenience Fee</p>
-            <p class="primary-text-color">
-              <span class="text-strike-through mx-8">Rs.49</span>FREE
+            <p className="primary-text-color">
+              <span className="text-strike-through mx-8">Rs.49</span>FREE
             </p>
           </div>
-          <div class="filter-divider-line"></div>
-          <div class="price-items text-bold-weight">
+          <div className="filter-divider-line"></div>
+          <div className="price-items text-bold-weight">
             <p>Total Amount</p>
-            <p class="secondary-text-color">Rs.{finalBillBoardAmount}</p>
+            <p className="secondary-text-color">Rs.{finalBillBoardAmount}</p>
           </div>
-          <div class="btn-container">
-            <button class="btn primary-btn">PLACE ORDER</button>
+          <div className="btn-container">
+            <button className="btn primary-btn">PLACE ORDER</button>
           </div>
         </div>
       )}
