@@ -31,3 +31,9 @@
   border: 1px solid var(--secondary-light);
   border-radius: 0.3rem;
 }
+
+@media screen and (max-width:768px){
+  .form-container {
+      width: 100%;
+  }
+}

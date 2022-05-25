@@ -1,0 +1,85 @@
+.hamburger-menu{
+    cursor: pointer;
+    display: none;
+}
+
+.hamburger-menu:hover{
+    color: var(--primary-color);
+}
+
+.side-menu{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    background-color: var(--secondary-lighter);
+    overflow: hidden;
+    transition: width .2s ease-in-out;
+}
+
+.side-menu-content{
+    margin: 4rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    gap: 2rem;
+}
+
+@media screen and (max-width:1024px){
+    .content{
+        width: auto;
+    }
+    .hero-container{
+        align-items: flex-end;
+    }
+    .brand-name{
+        font-size: var(--size-20);
+    }
+}
+
+@media screen and (max-width: 768px){
+    .header-links{
+        display: none;
+    }
+    .header-icons{
+        display: none;
+    }
+    .search-input{
+        display: none;
+    }
+    .hamburger-menu{
+        display: block;
+    }
+    .side-menu{
+        width: 60vw;
+    }
+}
+
+@media screen and (max-width:640px){
+    .featured-card-size{
+        height: auto;
+    }
+    .featured-brand-size{
+        height: auto;
+    }
+    .text-bottom{
+        font-size: var(--size-28);
+        bottom: -1rem;
+    }
+    .content{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:480px){
+    .hero-container{
+        height: auto;
+    }
+    .side-menu{
+        width: 70vw;
+    }
+}
