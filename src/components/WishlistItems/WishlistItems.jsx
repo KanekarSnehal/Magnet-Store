@@ -8,7 +8,7 @@ import {
 export const WishlistItems = () => {
   const { wishlist, wishlistDispatch } = useWishlist();
   const { cart, cartDispatch } = useCart();
-  console.log(cart);
+
   return (
     <>
       {wishlist.length === 0 ? (
