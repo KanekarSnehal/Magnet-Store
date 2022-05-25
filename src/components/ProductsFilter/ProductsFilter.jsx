@@ -38,7 +38,7 @@ export default function ProductsFilter() {
       <div className="filter-divider-line"></div>
       <div className="filter-section">
         <p className="text-bold-weight filter-section-title">SORT</p>
-        <label for="low-to-high" className="form-label">
+        <label htmlFor="low-to-high" className="form-label">
           <input
             type="radio"
             id="low-to-high"
@@ -51,7 +51,7 @@ export default function ProductsFilter() {
           />
           Price - Low to High
         </label>
-        <label for="high-to-low" className="form-label">
+        <label htmlFor="high-to-low" className="form-label">
           <input
             type="radio"
             id="high-to-low"
@@ -99,7 +99,7 @@ export default function ProductsFilter() {
         <p className="text-bold-weight filter-section-title">CATEGORIES</p>
         {categoriesData.map((category) => (
           <label
-            for={category.categoryName}
+            htmlFor={category.categoryName}
             className="form-label"
             key={category._id}
           >
@@ -126,7 +126,11 @@ export default function ProductsFilter() {
         <p className="text-bold-weight filter-section-title">BRANDS</p>
 
         {brandsData.map((brand) => (
-          <label for={brand.brandName} className="form-label" key={brand._id}>
+          <label
+            htmlFor={brand.brandName}
+            className="form-label"
+            key={brand._id}
+          >
             <input
               type="checkbox"
               id={brand.brandName}
@@ -147,9 +151,9 @@ export default function ProductsFilter() {
         <p className="text-bold-weight filter-section-title">RATINGS</p>
         {ratingsArray.map((rating) => (
           <label
-            for={rating.ratingName}
+            htmlFor={rating.ratingName}
             className="form-label"
-            key={rating._id}
+            key={rating.ratingValue}
           >
             <input
               type="radio"
@@ -172,7 +176,7 @@ export default function ProductsFilter() {
       <div className="filter-divider-line"></div>
       <div className="filter-section">
         <p className="text-bold-weight filter-section-title">AVAIABILITY</p>
-        <label for="availability" className="form-label">
+        <label htmlFor="availability" className="form-label">
           <input
             type="checkbox"
             id="availability"
@@ -190,7 +194,7 @@ export default function ProductsFilter() {
         <p className="text-bold-weight filter-section-title">
           Fast Delivery Only
         </p>
-        <label for="fast-delivery" className="form-label">
+        <label htmlFor="fast-delivery" className="form-label">
           <input
             type="checkbox"
             id="fast-delivery"
