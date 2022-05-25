@@ -67,7 +67,7 @@ export function Header() {
         <Link to={"/signup"}>
           <i
             href="/pages/sign-up.html"
-            class="far fa-user number-badge-iframe"
+            className="far fa-user number-badge-iframe"
           ></i>
         </Link>
 
