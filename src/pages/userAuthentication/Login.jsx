@@ -73,8 +73,8 @@ export function Login() {
                 type="email"
                 placeholder="Enter your email here"
                 name="email"
-                required
                 onChange={onChangeHandler}
+                required
               />
             </div>
 
@@ -84,13 +84,10 @@ export function Login() {
                 type="password"
                 placeholder="Enter your password"
                 name="password"
-                required
                 onChange={onChangeHandler}
+                required
               />
             </div>
-            <a href="#" class="link-btn my-8">
-              Forgot password?
-            </a>
             <button
               className="btn outline-primary-btn text-center"
               type="submit"
