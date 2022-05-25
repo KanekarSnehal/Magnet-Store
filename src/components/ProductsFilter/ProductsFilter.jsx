@@ -24,26 +24,26 @@ export default function ProductsFilter() {
     { ratingName: "1 Stars & above", ratingValue: 1 },
   ];
   return (
-    <div class="filter-container">
-      <div class="filter-title">
-        <p class="text-bold-weight">FILTERS</p>
+    <div className="filter-container">
+      <div className="filter-title">
+        <p className="text-bold-weight">FILTERS</p>
         <a
-          class=" link-btn"
+          className=" link-btn"
           onClick={() => filterDispatch({ type: "CLEAR_ALL" })}
         >
           CLEAR ALL
         </a>
       </div>
 
-      <div class="filter-divider-line"></div>
-      <div class="filter-section">
-        <p class="text-bold-weight filter-section-title">SORT</p>
-        <label for="low-to-high" class="form-label">
+      <div className="filter-divider-line"></div>
+      <div className="filter-section">
+        <p className="text-bold-weight filter-section-title">SORT</p>
+        <label for="low-to-high" className="form-label">
           <input
             type="radio"
             id="low-to-high"
             name="sort"
-            class="input-checkbox"
+            className="input-checkbox"
             checked={sortBy === "LOW_TO_HIGH"}
             onChange={() =>
               filterDispatch({ type: "SORT", payload: "LOW_TO_HIGH" })
@@ -51,12 +51,12 @@ export default function ProductsFilter() {
           />
           Price - Low to High
         </label>
-        <label for="high-to-low" class="form-label">
+        <label for="high-to-low" className="form-label">
           <input
             type="radio"
             id="high-to-low"
             name="sort"
-            class="input-checkbox"
+            className="input-checkbox"
             checked={sortBy === "HIGH_TO_LOW"}
             onChange={() =>
               filterDispatch({ type: "SORT", payload: "HIGH_TO_LOW" })
@@ -66,16 +66,16 @@ export default function ProductsFilter() {
         </label>
       </div>
 
-      <div class="filter-divider-line"></div>
+      <div className="filter-divider-line"></div>
 
-      <div class="filter-section">
-        <p class="text-bold-weight filter-section-title">PRICE</p>
+      <div className="filter-section">
+        <p className="text-bold-weight filter-section-title">PRICE</p>
         <input
           type="range"
           min="500"
           max="5000"
           step="500"
-          class="slider"
+          className="slider"
           list="tickmarks"
           value={priceRange}
           onChange={(e) =>
@@ -83,7 +83,7 @@ export default function ProductsFilter() {
           }
         />
 
-        <datalist id="tickmarks" class="slider-datalist">
+        <datalist id="tickmarks" className="slider-datalist">
           <option value="500" label="500"></option>
           <option value="1000" label="1K"></option>
           <option value="2000" label="2K"></option>
@@ -94,20 +94,20 @@ export default function ProductsFilter() {
         <p>Price: {priceRange}</p>
       </div>
 
-      <div class="filter-divider-line"></div>
-      <div class="filter-section">
-        <p class="text-bold-weight filter-section-title">CATEGORIES</p>
+      <div className="filter-divider-line"></div>
+      <div className="filter-section">
+        <p className="text-bold-weight filter-section-title">CATEGORIES</p>
         {categoriesData.map((category) => (
           <label
             for={category.categoryName}
-            class="form-label"
+            className="form-label"
             key={category._id}
           >
             <input
               type="checkbox"
               id={category.categoryName}
               name="category"
-              class="input-checkbox"
+              className="input-checkbox"
               checked={categories.includes(category.categoryName.toLowerCase())}
               onChange={() =>
                 filterDispatch({
@@ -121,17 +121,17 @@ export default function ProductsFilter() {
         ))}
       </div>
 
-      <div class="filter-divider-line"></div>
-      <div class="filter-section">
-        <p class="text-bold-weight filter-section-title">BRANDS</p>
+      <div className="filter-divider-line"></div>
+      <div className="filter-section">
+        <p className="text-bold-weight filter-section-title">BRANDS</p>
 
         {brandsData.map((brand) => (
-          <label for={brand.brandName} class="form-label" key={brand._id}>
+          <label for={brand.brandName} className="form-label" key={brand._id}>
             <input
               type="checkbox"
               id={brand.brandName}
               name="brands"
-              class="input-checkbox"
+              className="input-checkbox"
               checked={brands.includes(brand.brandName)}
               onChange={() =>
                 filterDispatch({ type: "BRAND", payload: brand.brandName })
@@ -142,16 +142,20 @@ export default function ProductsFilter() {
         ))}
       </div>
 
-      <div class="filter-divider-line"></div>
-      <div class="filter-section">
-        <p class="text-bold-weight filter-section-title">RATINGS</p>
+      <div className="filter-divider-line"></div>
+      <div className="filter-section">
+        <p className="text-bold-weight filter-section-title">RATINGS</p>
         {ratingsArray.map((rating) => (
-          <label for={rating.ratingName} class="form-label" key={rating._id}>
+          <label
+            for={rating.ratingName}
+            className="form-label"
+            key={rating._id}
+          >
             <input
               type="radio"
               id={rating.ratingName}
               name="rating"
-              class="input-checkbox"
+              className="input-checkbox"
               checked={ratings === rating.ratingValue}
               onChange={() =>
                 filterDispatch({
@@ -165,15 +169,15 @@ export default function ProductsFilter() {
         ))}
       </div>
 
-      <div class="filter-divider-line"></div>
-      <div class="filter-section">
-        <p class="text-bold-weight filter-section-title">AVAIABILITY</p>
-        <label for="availability" class="form-label">
+      <div className="filter-divider-line"></div>
+      <div className="filter-section">
+        <p className="text-bold-weight filter-section-title">AVAIABILITY</p>
+        <label for="availability" className="form-label">
           <input
             type="checkbox"
             id="availability"
             name="availability"
-            class="input-checkbox"
+            className="input-checkbox"
             checked={includeOutOfStock}
             onChange={() => filterDispatch({ type: "INCLUDE_OUT_OF_STOCK" })}
           />
@@ -181,15 +185,17 @@ export default function ProductsFilter() {
         </label>
       </div>
 
-      <div class="filter-divider-line"></div>
-      <div class="filter-section">
-        <p class="text-bold-weight filter-section-title">Fast Delivery Only</p>
-        <label for="fast-delivery" class="form-label">
+      <div className="filter-divider-line"></div>
+      <div className="filter-section">
+        <p className="text-bold-weight filter-section-title">
+          Fast Delivery Only
+        </p>
+        <label for="fast-delivery" className="form-label">
           <input
             type="checkbox"
             id="fast-delivery"
             name="fast-delivery"
-            class="input-checkbox"
+            className="input-checkbox"
             checked={isFastDelivery}
             onChange={() => filterDispatch({ type: "FAST_DELIVERY_ONLY" })}
           />

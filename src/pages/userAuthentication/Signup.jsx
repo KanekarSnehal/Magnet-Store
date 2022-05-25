@@ -50,24 +50,24 @@ export function Signup() {
   return (
     <div>
       <Header />
-      <main class="main-container">
-        <div class="form-container">
-          <h4 class="secondary-text-color  text-center">SIGN UP</h4>
-          <div class="title-underline"></div>
+      <main className="main-container">
+        <div className="form-container">
+          <h4 className="secondary-text-color  text-center">SIGN UP</h4>
+          <div className="title-underline"></div>
 
-          <form class="form-col">
-            <div class="row">
-              <div class="column-30-pc">
+          <form className="form-col">
+            <div className="row">
+              <div className="column-30-pc">
                 <label
                   for="first-name"
-                  class="form-label text-bold-weight form-label-required-field"
+                  className="form-label text-bold-weight form-label-required-field"
                 >
                   First Name
                 </label>
               </div>
-              <div class="column-70-pc">
+              <div className="column-70-pc">
                 <input
-                  class="form-field"
+                  className="form-field"
                   type="text"
                   placeholder="Enter your first name"
                   name="firstName"
@@ -77,18 +77,18 @@ export function Signup() {
               </div>
             </div>
 
-            <div class="row">
-              <div class="column-30-pc">
+            <div className="row">
+              <div className="column-30-pc">
                 <label
                   for="first-name"
-                  class="form-label text-bold-weight form-label-required-field"
+                  className="form-label text-bold-weight form-label-required-field"
                 >
                   Last Name
                 </label>
               </div>
-              <div class="column-70-pc">
+              <div className="column-70-pc">
                 <input
-                  class="form-field"
+                  className="form-field"
                   type="text"
                   placeholder="Enter your last name"
                   name="lastName"
@@ -98,18 +98,18 @@ export function Signup() {
               </div>
             </div>
 
-            <div class="row">
-              <div class="column-30-pc">
+            <div className="row">
+              <div className="column-30-pc">
                 <label
                   for="first-name"
-                  class="form-label text-bold-weight form-label-required-field"
+                  className="form-label text-bold-weight form-label-required-field"
                 >
                   Email
                 </label>
               </div>
-              <div class="column-70-pc">
+              <div className="column-70-pc">
                 <input
-                  class="form-field"
+                  className="form-field"
                   type="email"
                   placeholder="Enter your email"
                   name="email"
@@ -119,18 +119,18 @@ export function Signup() {
               </div>
             </div>
 
-            <div class="row">
-              <div class="column-30-pc">
+            <div className="row">
+              <div className="column-30-pc">
                 <label
                   for="first-name"
-                  class="form-label text-bold-weight form-label-required-field"
+                  className="form-label text-bold-weight form-label-required-field"
                 >
                   Password
                 </label>
               </div>
-              <div class="column-70-pc">
+              <div className="column-70-pc">
                 <input
-                  class="form-field"
+                  className="form-field"
                   type="password"
                   placeholder="Enter password"
                   name="password"
@@ -140,18 +140,18 @@ export function Signup() {
               </div>
             </div>
 
-            <div class="row">
-              <div class="column-30-pc">
+            <div className="row">
+              <div className="column-30-pc">
                 <label
                   for="first-name"
-                  class="form-label text-bold-weight form-label-required-field"
+                  className="form-label text-bold-weight form-label-required-field"
                 >
                   Confirm Password
                 </label>
               </div>
-              <div class="column-70-pc">
+              <div className="column-70-pc">
                 <input
-                  class="form-field"
+                  className="form-field"
                   type="password"
                   placeholder="Re-type password"
                   name="confirmPassword"
@@ -162,16 +162,16 @@ export function Signup() {
             </div>
 
             <button
-              class="btn primary-btn text-center"
+              className="btn primary-btn text-center"
               type="submit"
               onClick={postSignupData}
             >
               REGISTER
             </button>
 
-            <div class="py-16">
+            <div className="py-16">
               Already registered?
-              <Link to="/login" class="link-btn">
+              <Link to="/login" className="link-btn">
                 Login here
               </Link>
             </div>

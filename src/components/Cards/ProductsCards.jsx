@@ -29,9 +29,9 @@ export default function ProductsCards() {
             key={product._id}
           >
             <div className={!product.inStock ? "opacity" : ""}>
-              <img class="card-image" src={product.img} alt="card image" />
+              <img className="card-image" src={product.img} alt="card image" />
 
-              <div class="position-absolute pos-top-right   badge-number ">
+              <div className="position-absolute pos-top-right   badge-number ">
                 {wishlist.find(
                   (wishlistItem) => wishlistItem._id === product._id
                 ) ? (
@@ -53,19 +53,19 @@ export default function ProductsCards() {
                 )}
               </div>
 
-              <div class="card-content">
-                <h6 class="card-title">{product.title}</h6>
-                <p class="card-info p-sm">{product.description}</p>
-                <p class="text-bold-weight">
+              <div className="card-content">
+                <h6 className="card-title">{product.title}</h6>
+                <p className="card-info p-sm">{product.description}</p>
+                <p className="text-bold-weight">
                   Rs.
                   {Number(product.price) -
                     (Number(product.price) * Number(product.discount)) / 100}
-                  <span class="text-light-weight">
-                    <span class="text-strike-through mx-8">
+                  <span className="text-light-weight">
+                    <span className="text-strike-through mx-8">
                       Rs. {product.price}
                     </span>
                   </span>
-                  <span class="primary-text-color">
+                  <span className="primary-text-color">
                     {product.discount}% OFF
                   </span>
                   <span className="card-rating">
@@ -74,18 +74,18 @@ export default function ProductsCards() {
                   </span>
                 </p>
 
-                <div class="btn-container p-sm">
-                  <a class="mr-16 ">
+                <div className="btn-container p-sm">
+                  <a className="mr-16 ">
                     {cart.find((cartItem) => cartItem._id === product._id) ? (
                       <button
-                        class="btn primary-btn"
+                        className="btn primary-btn"
                         onClick={() => navigate("/cart")}
                       >
                         Go to Cart
                       </button>
                     ) : (
                       <button
-                        class="btn primary-btn"
+                        className="btn primary-btn"
                         onClick={() => {
                           isAuthenticated
                             ? addToCart(product, cartDispatch)
@@ -93,7 +93,8 @@ export default function ProductsCards() {
                         }}
                         disabled={!product.inStock}
                       >
-                        <i class="fas fa-shopping-cart mr-16 "></i>Add to cart
+                        <i className="fas fa-shopping-cart mr-16 "></i>Add to
+                        cart
                       </button>
                     )}
                   </a>

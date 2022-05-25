@@ -13,57 +13,59 @@ export function CartItems() {
   const { wishlist, wishlistDispatch } = useWishlist();
 
   return (
-    <div class="cart-item-container mr-16">
+    <div className="cart-item-container mr-16">
       {cart.length !== 0 &&
         cart.map((cartItem) => (
-          <div class="horizontal-card-container" key={cartItem._id}>
-            <img class="card-image" src={cartItem.img} alt="card image" />
-            <div class="card-content">
-              <p class="card-title text-bold-weight">{cartItem.title}</p>
+          <div className="horizontal-card-container" key={cartItem._id}>
+            <img className="card-image" src={cartItem.img} alt="card image" />
+            <div className="card-content">
+              <p className="card-title text-bold-weight">{cartItem.title}</p>
 
-              <span class="text-bold-weight p-sm">
+              <span className="text-bold-weight p-sm">
                 Rs.
                 {Number(cartItem.price) -
                   (Number(cartItem.price) * Number(cartItem.discount)) / 100}
-                <span class="text-light-weight">
-                  <span class="text-strike-through mx-8">
+                <span className="text-light-weight">
+                  <span className="text-strike-through mx-8">
                     Rs.{cartItem.price}
                   </span>
                 </span>
-                <span class="primary-text-color">{cartItem.discount}%</span>
+                <span className="primary-text-color">{cartItem.discount}%</span>
               </span>
               <div
-                class="badge badge-number "
+                className="badge badge-number "
                 onClick={() => removeFromCart(cartItem._id, cartDispatch)}
               >
                 <i className="fa-solid fa-xmark number-badge-iframe badge-lg-size"></i>
               </div>
-              <div class="btn-container p-sm">
+              <div className="btn-container p-sm">
                 {cartItem.qty <= 1 ? (
                   <button
-                    class="btn outline-secondary-btn"
+                    className="btn outline-secondary-btn"
                     onClick={() => removeFromCart(cartItem._id, cartDispatch)}
                   >
-                    <i class="fa-solid fa-trash-can"></i>{" "}
+                    <i className="fa-solid fa-trash-can"></i>{" "}
                   </button>
                 ) : (
                   <button
-                    class="btn outline-secondary-btn"
+                    className="btn outline-secondary-btn"
                     onClick={() =>
                       decrementCartItem(cartItem._id, cartDispatch)
                     }
                   >
-                    <i class="fas fa-minus"></i>
+                    <i className="fas fa-minus"></i>
                   </button>
                 )}
 
-                <span class="btn outline-secondary-btn">{cartItem.qty}</span>
+                <span className="btn outline-secondary-btn">
+                  {cartItem.qty}
+                </span>
 
                 <button
-                  class="btn outline-secondary-btn"
+                  className="btn outline-secondary-btn"
                   onClick={() => incrementCartItem(cartItem._id, cartDispatch)}
                 >
-                  <i class="fas fa-plus"></i>
+                  <i className="fas fa-plus"></i>
                 </button>
               </div>
 
@@ -71,7 +73,7 @@ export function CartItems() {
                 (wishlistItem) => wishlistItem._id === cartItem._id
               ) ? (
                 <button
-                  class="btn outline-secondary-btn"
+                  className="btn outline-secondary-btn"
                   onClick={() => {
                     removeFromWishlist(cartItem._id, wishlistDispatch);
                   }}
@@ -80,7 +82,7 @@ export function CartItems() {
                 </button>
               ) : (
                 <button
-                  class="btn outline-secondary-btn"
+                  className="btn outline-secondary-btn"
                   onClick={() => {
                     addToWishlist(cartItem, wishlistDispatch);
                     removeFromCart(cartItem._id, cartDispatch);

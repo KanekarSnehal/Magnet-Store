@@ -9,14 +9,14 @@ export function Cart() {
   return (
     <>
       <Header />
-      <main class="main-container">
-        <h2 class="text-center secondary-text-color">My Cart</h2>
-        <div class="title-underline"></div>
+      <main className="main-container">
+        <h2 className="text-center secondary-text-color">My Cart</h2>
+        <div className="title-underline"></div>
         {cart.length === 0 ? (
-          <h1 class="text-center">No products added...</h1>
+          <h1 className="text-center">No products added...</h1>
         ) : (
           <>
-            <div class="cart-container">
+            <div className="cart-container">
               <CartItems />
               <CartBillBoard />
             </div>

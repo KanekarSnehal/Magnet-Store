@@ -8,10 +8,10 @@ export function Whishlist() {
   return (
     <>
       <Header />
-      <main class="main-container">
-        <h2 class="text-center secondary-text-color">My Wishlist</h2>
-        <div class="title-underline"></div>
-        <div class="flex-row">
+      <main className="main-container">
+        <h2 className="text-center secondary-text-color">My Wishlist</h2>
+        <div className="title-underline"></div>
+        <div className="flex-row">
           <WishlistItems />
         </div>
       </main>

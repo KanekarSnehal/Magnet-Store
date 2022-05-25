@@ -9,8 +9,8 @@ export function Products() {
     <div className="products-page">
       <Header />
       <ProductsFilter />
-      <main class="main-container">
-        <div class="products-container">
+      <main className="main-container">
+        <div className="products-container">
           <ProductsCards />
         </div>
       </main>
