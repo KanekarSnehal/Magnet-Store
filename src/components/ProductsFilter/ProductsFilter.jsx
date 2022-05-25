@@ -97,76 +97,72 @@ export default function ProductsFilter() {
       <div class="filter-divider-line"></div>
       <div class="filter-section">
         <p class="text-bold-weight filter-section-title">CATEGORIES</p>
-        {categoriesData.map((category) => {
-          return (
-            <label for={category.categoryName} class="form-label">
-              <input
-                type="checkbox"
-                id={category.categoryName}
-                name="category"
-                class="input-checkbox"
-                checked={categories.includes(
-                  category.categoryName.toLowerCase()
-                )}
-                onChange={() =>
-                  filterDispatch({
-                    type: "CATEGORY",
-                    payload: category.categoryName.toLowerCase(),
-                  })
-                }
-              />
-              {category.categoryName}
-            </label>
-          );
-        })}
+        {categoriesData.map((category) => (
+          <label
+            for={category.categoryName}
+            class="form-label"
+            key={category._id}
+          >
+            <input
+              type="checkbox"
+              id={category.categoryName}
+              name="category"
+              class="input-checkbox"
+              checked={categories.includes(category.categoryName.toLowerCase())}
+              onChange={() =>
+                filterDispatch({
+                  type: "CATEGORY",
+                  payload: category.categoryName.toLowerCase(),
+                })
+              }
+            />
+            {category.categoryName}
+          </label>
+        ))}
       </div>
 
       <div class="filter-divider-line"></div>
       <div class="filter-section">
         <p class="text-bold-weight filter-section-title">BRANDS</p>
 
-        {brandsData.map((brand) => {
-          return (
-            <label for={brand.brandName} class="form-label">
-              <input
-                type="checkbox"
-                id={brand.brandName}
-                name="brands"
-                class="input-checkbox"
-                checked={brands.includes(brand.brandName)}
-                onChange={() =>
-                  filterDispatch({ type: "BRAND", payload: brand.brandName })
-                }
-              />
-              {brand.brandName}
-            </label>
-          );
-        })}
+        {brandsData.map((brand) => (
+          <label for={brand.brandName} class="form-label" key={brand._id}>
+            <input
+              type="checkbox"
+              id={brand.brandName}
+              name="brands"
+              class="input-checkbox"
+              checked={brands.includes(brand.brandName)}
+              onChange={() =>
+                filterDispatch({ type: "BRAND", payload: brand.brandName })
+              }
+            />
+            {brand.brandName}
+          </label>
+        ))}
       </div>
 
       <div class="filter-divider-line"></div>
       <div class="filter-section">
         <p class="text-bold-weight filter-section-title">RATINGS</p>
-        {ratingsArray.map((rating) => {
-          return (
-            <label for={rating.ratingName} class="form-label">
-              <input
-                type="radio"
-                id={rating.ratingName}
-                name="rating"
-                class="input-checkbox"
-                checked={ratings === rating.ratingValue}
-                onChange={() =>
-                  filterDispatch({
-                    type: "RATING",
-                    payload: rating.ratingValue,
-                  })
-                }
-              />
-              {rating.ratingName}
-            </label>
-          );
-        })}
+        {ratingsArray.map((rating) => (
+          <label for={rating.ratingName} class="form-label" key={rating._id}>
+            <input
+              type="radio"
+              id={rating.ratingName}
+              name="rating"
+              class="input-checkbox"
+              checked={ratings === rating.ratingValue}
+              onChange={() =>
+                filterDispatch({
+                  type: "RATING",
+                  payload: rating.ratingValue,
+                })
+              }
+            />
+            {rating.ratingName}
+          </label>
+        ))}
       </div>
 
       <div class="filter-divider-line"></div>

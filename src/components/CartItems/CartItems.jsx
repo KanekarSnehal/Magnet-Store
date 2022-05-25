@@ -16,7 +16,7 @@ export function CartItems() {
     <div class="cart-item-container mr-16">
       {cart.length !== 0 &&
         cart.map((cartItem) => (
-          <div class="horizontal-card-container">
+          <div class="horizontal-card-container" key={cartItem._id}>
             <img class="card-image" src={cartItem.img} alt="card image" />
             <div class="card-content">
               <p class="card-title text-bold-weight">{cartItem.title}</p>

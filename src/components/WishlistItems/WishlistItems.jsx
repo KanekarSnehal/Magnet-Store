@@ -15,7 +15,10 @@ export const WishlistItems = () => {
         <h1>No products added</h1>
       ) : (
         wishlist.map((wishlistItem) => (
-          <div class="vertical-card-container card-hover">
+          <div
+            class="vertical-card-container card-hover"
+            key={wishlistItem._id}
+          >
             <img class="card-image" src={wishlistItem.img} />
 
             <div class="card-content">

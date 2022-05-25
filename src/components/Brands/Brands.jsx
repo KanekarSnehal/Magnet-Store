@@ -18,6 +18,7 @@ export function Brands() {
           return (
             <li
               className="featured-brand-size card-hover"
+              key={brand._id}
               onClick={() => {
                 filterDispatch({ type: "BRAND", payload: brand.brandName });
                 navigate("/products");
