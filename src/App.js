@@ -1,14 +1,24 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Home, Products, Login, Signup, Whishlist, Cart } from "./pages/index";
+import {
+  Home,
+  Products,
+  Login,
+  Signup,
+  Whishlist,
+  Cart,
+  SingleProductPage,
+} from "./pages/index";
 import Mockman from "mockman-js";
 import { GuestRoute, ProtectedRoute } from "./utilities/routes";
+
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="products" element={<Products />} />
+        <Route path="/product/:productId" element={<SingleProductPage />} />
         <Route element={<GuestRoute />}>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
