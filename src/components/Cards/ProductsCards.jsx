@@ -29,21 +29,26 @@ export default function ProductsCards() {
             key={product._id}
           >
             <div className={!product.inStock ? "opacity" : ""}>
-              <img className="card-image" src={product.img} alt="card image" />
+              <img
+                className="card-image cursor-pointer"
+                src={product.img}
+                alt="card image"
+                onClick={() => navigate(`/product/${product._id}`)}
+              />
 
-              <div className="position-absolute pos-top-right   badge-number ">
+              <div className="position-absolute pos-top-right badge-number ">
                 {wishlist.find(
                   (wishlistItem) => wishlistItem._id === product._id
                 ) ? (
                   <i
-                    className="fas fa-heart number-badge-iframe badge-lg-size"
+                    className="fas fa-heart number-badge-iframe badge-lg-size cursor-pointer"
                     onClick={() =>
                       removeFromWishlist(product._id, wishlistDispatch)
                     }
                   ></i>
                 ) : (
                   <i
-                    className="far fa-heart number-badge-iframe badge-lg-size"
+                    className="far fa-heart number-badge-iframe badge-lg-size cursor-pointer"
                     onClick={() => {
                       isAuthenticated
                         ? addToWishlist(product, wishlistDispatch)
@@ -54,7 +59,12 @@ export default function ProductsCards() {
               </div>
 
               <div className="card-content">
-                <h6 className="card-title">{product.title}</h6>
+                <h6
+                  className="card-title cursor-pointer"
+                  onClick={() => navigate(`/product/${product._id}`)}
+                >
+                  {product.title}
+                </h6>
                 <p className="card-info p-sm">{product.description}</p>
                 <p className="text-bold-weight">
                   Rs.
@@ -75,29 +85,26 @@ export default function ProductsCards() {
                 </p>
 
                 <div className="btn-container p-sm">
-                  <a className="mr-16 ">
-                    {cart.find((cartItem) => cartItem._id === product._id) ? (
-                      <button
-                        className="btn primary-btn"
-                        onClick={() => navigate("/cart")}
-                      >
-                        Go to Cart
-                      </button>
-                    ) : (
-                      <button
-                        className="btn primary-btn"
-                        onClick={() => {
-                          isAuthenticated
-                            ? addToCart(product, cartDispatch)
-                            : navigate("/login");
-                        }}
-                        disabled={!product.inStock}
-                      >
-                        <i className="fas fa-shopping-cart mr-16 "></i>Add to
-                        cart
-                      </button>
-                    )}
-                  </a>
+                  {cart.find((cartItem) => cartItem._id === product._id) ? (
+                    <button
+                      className="btn primary-btn mr-16"
+                      onClick={() => navigate("/cart")}
+                    >
+                      Go to Cart
+                    </button>
+                  ) : (
+                    <button
+                      className="btn primary-btn mr-16"
+                      onClick={() => {
+                        isAuthenticated
+                          ? addToCart(product, cartDispatch)
+                          : navigate("/login");
+                      }}
+                      disabled={!product.inStock}
+                    >
+                      <i className="fas fa-shopping-cart mr-16 "></i>Add to cart
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
