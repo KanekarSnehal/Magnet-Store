@@ -4,3 +4,4 @@ export { Signup } from "./userAuthentication/Signup";
 export { Whishlist } from "./Whishlist/Whishlist";
 export { Products } from "./Products/Products";
 export { Cart } from "./Cart/Cart";
+export { SingleProductPage } from "./SingleProductPage/SingleProductPage";
