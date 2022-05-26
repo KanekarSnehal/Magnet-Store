@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 
 export const products = [
   {
-    _id: uuid(),
+    _id: "1P",
     title: "Natura Bowls Green",
     inStock: true,
     fastDelivery: false,
@@ -21,7 +21,7 @@ export const products = [
     img: "https://cdn.shopify.com/s/files/1/2690/0106/products/DSC00023_beaaa9a4-c942-4467-8eee-d77f26a2331a_700x.jpg?v=1614663852",
   },
   {
-    _id: uuid(),
+    _id: "2P",
     title: "Ash Textured Glassware",
     inStock: true,
     fastDelivery: true,
@@ -35,7 +35,7 @@ export const products = [
     img: "https://cdn.shopify.com/s/files/1/2690/0106/products/DSCF7796_700x.jpg?v=1640747254",
   },
   {
-    _id: uuid(),
+    _id: "3P",
     title: "Swirl Plates",
     inStock: false,
     fastDelivery: false,
@@ -49,7 +49,7 @@ export const products = [
     img: "https://cdn.shopify.com/s/files/1/2690/0106/products/SwirlPlates_11_700x.jpg?v=1613566343",
   },
   {
-    _id: uuid(),
+    _id: "4P",
     title: "Orange Crokery Fiesta",
     inStock: false,
     fastDelivery: true,
@@ -64,7 +64,7 @@ export const products = [
   },
 
   {
-    _id: uuid(),
+    _id: "5P",
     title: "Natura Bowls Black",
     inStock: true,
     fastDelivery: false,
@@ -78,7 +78,7 @@ export const products = [
     img: "https://cdn.shopify.com/s/files/1/2690/0106/products/NaturaBowlsBlack_1_700x.jpg?v=1614405868",
   },
   {
-    _id: uuid(),
+    _id: "6P",
     title: "Natura Bowls White",
     inStock: false,
     fastDelivery: false,
@@ -92,7 +92,7 @@ export const products = [
     img: "https://i.ibb.co/bNRz4fH/evy-prentice-8t-VLi-9-RLUc-unsplash.jpg",
   },
   {
-    _id: uuid(),
+    _id: "7P",
     title: "Red Wine Glass Set of 2",
     inStock: true,
     fastDelivery: true,
@@ -106,7 +106,7 @@ export const products = [
     img: "https://i.ibb.co/j6JtKKz/glassware.jpg",
   },
   {
-    _id: uuid(),
+    _id: "8P",
     title: "Classic Plates",
     inStock: true,
     fastDelivery: false,
@@ -120,7 +120,7 @@ export const products = [
     img: "https://i.ibb.co/fCfky44/plates.jpg",
   },
   {
-    _id: uuid(),
+    _id: "9P",
     title: "Siena Dinner Plate",
     inStock: true,
     fastDelivery: true,
