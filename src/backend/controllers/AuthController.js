@@ -37,6 +37,8 @@ export const signupHandler = function (schema, request) {
       ...rest,
       cart: [],
       wishlist: [],
+      addressList: [],
+      orders: [],
     };
     const createdUser = schema.users.create(newUser);
     const encodedToken = sign({ _id, email }, process.env.REACT_APP_JWT_SECRET);

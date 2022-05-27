@@ -3,26 +3,22 @@ import { Header, Loader } from "../../components";
 import "./single-product-page.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import {
-  useFilter,
-  useCart,
-  useWishlist,
-  useAuthContext,
-} from "../../context/index";
-import {
-  addToWishlist,
-  removeFromWishlist,
-  addToCart,
-} from "../../api-calls/index";
+import { useAuthContext, useUserData } from "../../context/index";
+import { addToWishlist, removeFromWishlist, addToCart } from "../../services";
 import { useNavigate } from "react-router-dom";
 
 export const SingleProductPage = () => {
   const { productId } = useParams();
   const [singleProduct, setSingleProduct] = useState({});
   const [loading, setLoading] = useState(true);
-  const { wishlist, wishlistDispatch } = useWishlist();
   const { isAuthenticated } = useAuthContext();
-  const { cart, cartDispatch } = useCart();
+  const {
+    userState: {
+      userWishlist: { wishlist },
+      userCart: { cart },
+    },
+    userDispatch,
+  } = useUserData();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,10 +38,7 @@ export const SingleProductPage = () => {
     <>
       <Header />
       <div className="single-product-page-container">
-        <img
-          src="https://cdn.shopify.com/s/files/1/2690/0106/products/DSC00023_beaaa9a4-c942-4467-8eee-d77f26a2331a_700x.jpg?v=1614663852"
-          className="product-image"
-        />
+        <img src={singleProduct?.img} className="product-image" />
         <div className="product-details">
           <h4>{singleProduct?.title}</h4>
           <div>
@@ -113,7 +106,7 @@ export const SingleProductPage = () => {
                 className="btn primary-btn mr-16"
                 onClick={() => {
                   isAuthenticated
-                    ? addToCart(singleProduct, cartDispatch)
+                    ? addToCart(singleProduct, userDispatch)
                     : navigate("/login");
                 }}
               >
@@ -127,7 +120,7 @@ export const SingleProductPage = () => {
               <button
                 className="btn outline-secondary-btn mr-16"
                 onClick={() =>
-                  removeFromWishlist(singleProduct._id, wishlistDispatch)
+                  removeFromWishlist(singleProduct._id, userDispatch)
                 }
               >
                 <i className="far fa-heart mr-16"></i>
@@ -138,7 +131,7 @@ export const SingleProductPage = () => {
                 className="btn outline-secondary-btn mr-16"
                 onClick={() => {
                   isAuthenticated
-                    ? addToWishlist(singleProduct, wishlistDispatch)
+                    ? addToWishlist(singleProduct, userDispatch)
                     : navigate("/login");
                 }}
               >

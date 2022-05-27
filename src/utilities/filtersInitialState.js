@@ -1,4 +1,4 @@
-const filtersInitialState = {
+export const filtersInitialState = {
   sortBy: null,
   includeOutOfStock: false,
   isFastDelivery: false,
@@ -8,4 +8,3 @@ const filtersInitialState = {
   ratings: null,
   search: null,
 };
-export { filtersInitialState };

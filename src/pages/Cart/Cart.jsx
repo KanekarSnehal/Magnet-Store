@@ -1,10 +1,20 @@
 import React from "react";
 import "./cart.css";
-import { CartItems, CartBillBoard, Header } from "../../components/index";
-import { useCart } from "../../context/index";
+import {
+  CartItems,
+  CartBillBoard,
+  Header,
+  AddressCard,
+  Loader,
+} from "../../components";
+import { useUserData } from "../../context";
 
 export function Cart() {
-  const { cart, cartDispatch } = useCart();
+  const {
+    userState: {
+      userCart: { cart, loading },
+    },
+  } = useUserData();
 
   return (
     <>
@@ -12,15 +22,20 @@ export function Cart() {
       <main className="main-container">
         <h2 className="text-center secondary-text-color">My Cart</h2>
         <div className="title-underline"></div>
-        {cart.length === 0 ? (
+        {loading ? (
+          <Loader />
+        ) : cart.length === 0 ? (
           <h1 className="text-center">No products added...</h1>
         ) : (
-          <>
-            <div className="cart-container">
-              <CartItems />
-              <CartBillBoard />
+          <div className="cart-container">
+            <AddressCard />
+            <div className="cart-item-container mr-16">
+              {cart.map((cartItem) => (
+                <CartItems key={cartItem._id} cartItem={cartItem} />
+              ))}
             </div>
-          </>
+            <CartBillBoard />
+          </div>
         )}
       </main>
     </>
