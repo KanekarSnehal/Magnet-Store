@@ -104,3 +104,10 @@ li{
 .cursor-pointer{
   cursor: pointer;
 }
+
+.btn-special{
+  width: auto;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}

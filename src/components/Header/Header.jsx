@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { useFilter } from "../../context/index";
-import { useAuthContext } from "../../context/index";
-import { useNavigate } from "react-router-dom";
-import { useWishlist, useCart } from "../../context/index";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useUserData, useFilter, useAuthContext } from "../../context";
 import "./header.css";
 
 export function Header() {
   const { filterDispatch } = useFilter();
   const { isAuthenticated, authDispatch } = useAuthContext();
-  const { wishlist } = useWishlist();
-  const { cart, cartDispatch } = useCart();
+  const {
+    userState: {
+      userWishlist: { wishlist },
+      userCart: { cart },
+    },
+  } = useUserData();
   const navigate = useNavigate();
   const [showSideMenu, setShowSideMenu] = useState(false);
   const logoutHandler = (e) => {
@@ -82,7 +83,7 @@ export function Header() {
             ></i>
           </Link>
           <div className="badge badge-status-busy badge-md-size badge-number">
-            {wishlist.length}
+            {wishlist?.length}
           </div>
         </div>
 
@@ -97,7 +98,7 @@ export function Header() {
             ></i>
           </Link>
           <div className="badge badge-status-busy badge-md-size badge-number">
-            {cart.length}
+            {cart?.length}
           </div>
         </div>
         {isAuthenticated ? (

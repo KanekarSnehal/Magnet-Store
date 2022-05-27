@@ -1,22 +1,19 @@
 import React from "react";
-import {
-  useFilter,
-  useCart,
-  useWishlist,
-  useAuthContext,
-} from "../../context/index";
-import {
-  addToWishlist,
-  removeFromWishlist,
-  addToCart,
-} from "../../api-calls/index";
+import { useFilter, useUserData, useAuthContext } from "../../context/index";
+import { addToWishlist, removeFromWishlist, addToCart } from "../../services";
 import { useNavigate } from "react-router-dom";
 
 export default function ProductsCards() {
   const { finalFilteredProducts } = useFilter();
-  const { wishlist, wishlistDispatch } = useWishlist();
+  const {
+    userState: {
+      userWishlist: { wishlist },
+      userCart: { cart },
+    },
+    userDispatch,
+  } = useUserData();
   const { isAuthenticated } = useAuthContext();
-  const { cart, cartDispatch } = useCart();
+
   const navigate = useNavigate();
   return (
     <>
@@ -37,13 +34,13 @@ export default function ProductsCards() {
               />
 
               <div className="position-absolute pos-top-right badge-number ">
-                {wishlist.find(
+                {wishlist?.find(
                   (wishlistItem) => wishlistItem._id === product._id
                 ) ? (
                   <i
                     className="fas fa-heart number-badge-iframe badge-lg-size cursor-pointer"
                     onClick={() =>
-                      removeFromWishlist(product._id, wishlistDispatch)
+                      removeFromWishlist(product._id, userDispatch)
                     }
                   ></i>
                 ) : (
@@ -51,7 +48,7 @@ export default function ProductsCards() {
                     className="far fa-heart number-badge-iframe badge-lg-size cursor-pointer"
                     onClick={() => {
                       isAuthenticated
-                        ? addToWishlist(product, wishlistDispatch)
+                        ? addToWishlist(product, userDispatch)
                         : navigate("/login");
                     }}
                   ></i>
@@ -97,7 +94,7 @@ export default function ProductsCards() {
                       className="btn primary-btn mr-16"
                       onClick={() => {
                         isAuthenticated
-                          ? addToCart(product, cartDispatch)
+                          ? addToCart(product, userDispatch)
                           : navigate("/login");
                       }}
                       disabled={!product.inStock}

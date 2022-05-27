@@ -4,9 +4,8 @@ import App from "./App";
 import { makeServer } from "./server";
 import {
   FilterProvider,
-  CartProvider,
   AuthProvider,
-  WishlistProvider,
+  UserDataProvider,
 } from "./context/index";
 // Call make Server
 makeServer();
@@ -14,13 +13,11 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <CartProvider>
-        <WishlistProvider>
-          <FilterProvider>
-            <App />
-          </FilterProvider>
-        </WishlistProvider>
-      </CartProvider>
+      <UserDataProvider>
+        <FilterProvider>
+          <App />
+        </FilterProvider>
+      </UserDataProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById("root")

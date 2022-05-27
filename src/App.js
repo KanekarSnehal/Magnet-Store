@@ -10,7 +10,7 @@ import {
   SingleProductPage,
 } from "./pages/index";
 import Mockman from "mockman-js";
-import { GuestRoute, ProtectedRoute } from "./utilities/routes";
+import { ProtectedRoute } from "./utilities/routes";
 
 function App() {
   return (
@@ -19,10 +19,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="products" element={<Products />} />
         <Route path="/product/:productId" element={<SingleProductPage />} />
-        <Route element={<GuestRoute />}>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Whishlist />} />

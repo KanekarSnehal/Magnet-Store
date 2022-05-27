@@ -1,0 +1,13 @@
+.address-form-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-field{
+    width: 100%;
+    display: block;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    outline: none;
+}

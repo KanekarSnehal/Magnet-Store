@@ -1,6 +1,6 @@
 .cart-container {
   padding: 1rem;
-  margin: 0 auto;
+  margin: 0 auto 2rem auto;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
