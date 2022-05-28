@@ -4,8 +4,8 @@ import {
   CartItems,
   CartBillBoard,
   Header,
-  AddressCard,
   Loader,
+  AddressSelectList,
 } from "../../components";
 import { useUserData } from "../../context";
 
@@ -28,7 +28,7 @@ export function Cart() {
           <h1 className="text-center">No products added...</h1>
         ) : (
           <div className="cart-container">
-            <AddressCard />
+            <AddressSelectList />
             <div className="cart-item-container mr-16">
               {cart.map((cartItem) => (
                 <CartItems key={cartItem._id} cartItem={cartItem} />
