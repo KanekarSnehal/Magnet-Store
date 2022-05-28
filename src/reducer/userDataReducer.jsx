@@ -21,6 +21,14 @@ const {
   CART_LOADING,
 } = cartConstants;
 
+const {
+  GET_ADDRESSES,
+  ADD_ADDRESS,
+  UPDATE_ADDRESS,
+  REMOVE_ADDRESS,
+  ADDRESS_LOADING,
+} = addressConstants;
+
 export const UserDataReducer = (userDataState, userDataAction) => {
   const { type, payload } = userDataAction;
   switch (type) {
@@ -55,6 +63,23 @@ export const UserDataReducer = (userDataState, userDataAction) => {
         userCart: {
           ...userDataState.userCart,
           loading: !userDataState.userCart.loading,
+        },
+      };
+
+    case GET_ADDRESSES:
+    case ADD_ADDRESS:
+    case UPDATE_ADDRESS:
+    case REMOVE_ADDRESS:
+      return {
+        ...userDataState,
+        userAddress: { ...userDataState.userAddress, addresses: payload },
+      };
+    case ADDRESS_LOADING:
+      return {
+        ...userDataState,
+        userAddress: {
+          ...userDataState.userAddress,
+          loading: !userDataState.userAddress.loading,
         },
       };
   }
