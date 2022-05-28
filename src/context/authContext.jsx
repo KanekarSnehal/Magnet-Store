@@ -1,19 +1,21 @@
-import { createContext, useContext, useReducer } from "react";
-import { AuthReducer } from "../reducer/index";
-import { authInitialState } from "../utilities/index";
+import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext();
 
 const useAuthContext = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
-  const [authState, authDispatch] = useReducer(AuthReducer, authInitialState);
+  const [authState, setAuthState] = useState({
+    authToken: localStorage.getItem("magnetStoreToken") || null,
+    authUser: localStorage.getItem("magnetStoreUser") || null,
+    loading: false,
+  });
+
   return (
     <AuthContext.Provider
       value={{
-        isAuthenticated: authState.isAuthenticated,
-        user: authState.user,
-        authDispatch,
+        authState,
+        setAuthState,
       }}
     >
       {children}

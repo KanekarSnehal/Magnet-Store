@@ -2,14 +2,13 @@ import React from "react";
 import { useState } from "react";
 import { Header } from "../../components/index";
 import "./auth.css";
-import { authActionsConstants } from "../../reducer/index";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/index";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export function Login() {
-  const { authDispatch } = useAuthContext();
+  const { authState, setAuthState } = useAuthContext();
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
@@ -20,42 +19,49 @@ export function Login() {
   const postLoginData = async (e) => {
     e.preventDefault();
     try {
+      setAuthState({
+        ...authState,
+        loading: true,
+      });
       const { data } = await axios.post(`/api/auth/login`, {
         email: userInfo.email,
         password: userInfo.password,
       });
-
-      localStorage.setItem("token", data.encodedToken);
-      authDispatch({
-        type: authActionsConstants.GET_USER_DETAILS,
-        payload: data.createdUser,
+      localStorage.setItem("magnetStoreToken", data.encodedToken);
+      localStorage.setItem("magnetStoreUser", data.foundUser);
+      setAuthState({
+        ...authState,
+        authToken: data.encodedToken,
+        authUser: data.foundUser,
+        loading: false,
       });
       navigate("/");
     } catch (error) {
-      authDispatch({
-        type: authActionsConstants.USER_LOGIN_FAILURE,
-        payload: `Invalid email or password, please signup if you dont have an ccount ${error.message}`,
-      });
+      console.log(error);
     }
   };
   const handleTestLogin = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`/api/auth/login`, {
-        email: "test@gmail.com",
-        password: "test@123",
+      setAuthState({
+        ...authState,
+        loading: false,
       });
-      localStorage.setItem("token", data.encodedToken);
-      authDispatch({
-        type: authActionsConstants.GET_USER_DETAILS,
-        payload: data.foundUser.firstName,
+      const { data } = await axios.post(`/api/auth/login`, {
+        email: "karenbrewer12@gmail.com",
+        password: "karen@123",
+      });
+      localStorage.setItem("magnetStoreToken", data.encodedToken);
+      localStorage.setItem("magnetStoreUser", JSON.stringify(data.foundUser));
+      setAuthState({
+        ...authState,
+        authToken: data.encodedToken,
+        authUser: data.foundUser,
+        loading: false,
       });
       navigate("/");
     } catch (error) {
-      authDispatch({
-        type: authActionsConstants.USER_LOGIN_FAILURE,
-        payload: `Invalid email or password, please signup if you dont have an account `,
-      });
+      console.log(error);
     }
   };
   return (
