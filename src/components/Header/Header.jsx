@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useUserData, useFilter, useAuthContext } from "../../context";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
+import { useUserData, useFilter } from "../../context";
 import "./header.css";
 
 export function Header() {
   const { filterDispatch } = useFilter();
-  const { isAuthenticated, authDispatch } = useAuthContext();
   const {
     userState: {
       userWishlist: { wishlist },
@@ -14,10 +13,8 @@ export function Header() {
   } = useUserData();
   const navigate = useNavigate();
   const [showSideMenu, setShowSideMenu] = useState(false);
-  const logoutHandler = (e) => {
-    authDispatch({ type: "USER_LOGOUT" });
-    localStorage.removeItem("token");
-  };
+
+  const location = useLocation();
 
   return (
     <header className="header-container">
@@ -65,11 +62,8 @@ export function Header() {
       </div>
 
       <div className="header-icons ml-auto ">
-        <Link to={"/signup"}>
-          <i
-            href="/pages/sign-up.html"
-            className="far fa-user number-badge-iframe"
-          ></i>
+        <Link to={"/profile"}>
+          <i className="far fa-user number-badge-iframe"></i>
         </Link>
 
         <div className="position-relative">
@@ -101,18 +95,6 @@ export function Header() {
             {cart?.length}
           </div>
         </div>
-        {isAuthenticated ? (
-          <button className="btn primary-btn" onClick={logoutHandler}>
-            Logout
-          </button>
-        ) : (
-          <button
-            className="btn primary-btn"
-            onClick={() => navigate("/login")}
-          >
-            Login
-          </button>
-        )}
       </div>
 
       {showSideMenu && (
@@ -133,7 +115,7 @@ export function Header() {
                 Home
               </i>
             </Link>
-            <NavLink to={"/signup"}>
+            <NavLink to={"/profile"}>
               <i className={"far fa-user number-badge-iframe"}>Profile</i>
             </NavLink>
             <div className="position-relative">
