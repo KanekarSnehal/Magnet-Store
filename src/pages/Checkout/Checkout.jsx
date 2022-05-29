@@ -90,6 +90,7 @@ export const Checkout = () => {
               <p>Phone number: 7506873127</p>
             </span>
           </div>
+          <button className="btn primary-btn">PLACE ORDER</button>
         </div>
       </div>
     </>
