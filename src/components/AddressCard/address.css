@@ -27,3 +27,17 @@
      margin-right: 0; 
      margin-top: 0.2rem;
 }
+
+.address-card-container{
+    width: 50%;
+    border: 2px solid gray;
+    padding: 0.5rem;
+    margin:0 auto 2rem auto;
+    border-radius: 0.5rem;
+}
+
+@media screen and (max-width:768px){
+    .address-card-container{
+        width: 100%;
+    }
+}
