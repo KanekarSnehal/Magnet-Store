@@ -1,5 +1,5 @@
 import React from "react";
-import { useCategoriesAndBrandsAndProducts } from "../../hooks";
+import { useCategoriesAndBrandsAndProducts } from "../../hooks/useCategoriesAndBrandsAndProducts";
 import { useNavigate } from "react-router-dom";
 import { useFilter } from "../../context/index";
 

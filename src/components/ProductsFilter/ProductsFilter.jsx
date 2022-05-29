@@ -1,5 +1,5 @@
 import React from "react";
-import { useCategoriesAndBrandsAndProducts } from "../../hooks";
+import { useCategoriesAndBrandsAndProducts } from "../../hooks/useCategoriesAndBrandsAndProducts";
 import "./ProductsFilter.css";
 import { useFilter } from "../../context/index";
 
