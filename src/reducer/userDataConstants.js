@@ -6,6 +6,7 @@ export const cartConstants = {
   INCREMENT_CART_ITEM: "INCREMENT_CART_ITEM",
   CART_LOADING: "CART_LOADING",
   CART_ERROR: "CART_ERROR",
+  CLEAR_CART: "CLEAR_CART",
 };
 
 export const wishlistConstants = {

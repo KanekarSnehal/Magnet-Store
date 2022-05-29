@@ -19,6 +19,7 @@ const {
   DECREMENT_CART_ITEM,
   INCREMENT_CART_ITEM,
   CART_LOADING,
+  CLEAR_CART,
 } = cartConstants;
 
 const {
@@ -53,6 +54,7 @@ export const UserDataReducer = (userDataState, userDataAction) => {
     case REMOVE_FROM_CART:
     case DECREMENT_CART_ITEM:
     case INCREMENT_CART_ITEM:
+    case CLEAR_CART:
       return {
         ...userDataState,
         userCart: { ...userDataState.userCart, cart: payload },
