@@ -8,7 +8,7 @@ export const getAddresses = (userDispatch) => {
     const { data } = axios.get(addressUrl, getConfig());
     userDispatch({
       type: addressConstants.GET_ADDRESSES,
-      payload: data.address,
+      payload: data.addressList,
     });
     userDispatch({ type: addressConstants.ADDRESS_LOADING });
   } catch (e) {
@@ -16,37 +16,47 @@ export const getAddresses = (userDispatch) => {
   }
 };
 
-export const addAddress = (address, userDispatch) => {
+export const addAddress = async (address, userDispatch) => {
   try {
-    const { data } = axios.post(`${addressUrl}`, { address }, getConfig());
-    userDispatch({ type: addressConstants.ADD_ADDRESS, payload: data.address });
-  } catch (e) {
-    console.log(e);
-  }
-};
-
-export const removeAddress = (addressId, userDispatch) => {
-  try {
-    const { data } = axios.delete(`${addressUrl}/${addressId}`, getConfig());
+    const { data } = await axios.post(
+      `${addressUrl}`,
+      { address },
+      getConfig()
+    );
     userDispatch({
-      type: addressConstants.REMOVE_ADDRESS,
-      payload: data.address,
+      type: addressConstants.ADD_ADDRESS,
+      payload: data.addressList,
     });
   } catch (e) {
     console.log(e);
   }
 };
 
-export const updateAddress = (addressId, address, userDispatch) => {
+export const removeAddress = async (addressId, userDispatch) => {
   try {
-    const { data } = axios.post(
+    const { data } = await axios.delete(
+      `${addressUrl}/${addressId}`,
+      getConfig()
+    );
+    userDispatch({
+      type: addressConstants.REMOVE_ADDRESS,
+      payload: data.addressList,
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const updateAddress = async (addressId, address, userDispatch) => {
+  try {
+    const { data } = await axios.post(
       `${addressUrl}/${addressId}`,
       { address },
       getConfig()
     );
     userDispatch({
       type: addressConstants.UPDATE_ADDRESS,
-      payload: data.address,
+      payload: data.addressList,
     });
   } catch (e) {
     console.log(e);
