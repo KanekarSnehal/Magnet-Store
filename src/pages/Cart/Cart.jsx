@@ -1,12 +1,6 @@
 import React from "react";
 import "./cart.css";
-import {
-  CartItems,
-  CartBillBoard,
-  Header,
-  Loader,
-  AddressSelectList,
-} from "../../components";
+import { CartItems, CartBillBoard, Header, Loader } from "../../components";
 import { useUserData } from "../../context";
 
 export function Cart() {
@@ -28,7 +22,6 @@ export function Cart() {
           <h1 className="text-center">No products added...</h1>
         ) : (
           <div className="cart-container">
-            <AddressSelectList />
             <div className="cart-item-container mr-16">
               {cart.map((cartItem) => (
                 <CartItems key={cartItem._id} cartItem={cartItem} />
