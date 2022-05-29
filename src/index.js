@@ -7,6 +7,7 @@ import {
   AuthProvider,
   UserDataProvider,
   AddressProvider,
+  DataProvider,
 } from "./context/index";
 // Call make Server
 makeServer();
@@ -14,13 +15,15 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <UserDataProvider>
-        <AddressProvider>
-          <FilterProvider>
-            <App />
-          </FilterProvider>
-        </AddressProvider>
-      </UserDataProvider>
+      <DataProvider>
+        <UserDataProvider>
+          <AddressProvider>
+            <FilterProvider>
+              <App />
+            </FilterProvider>
+          </AddressProvider>
+        </UserDataProvider>
+      </DataProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById("root")

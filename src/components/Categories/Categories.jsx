@@ -1,10 +1,9 @@
 import React from "react";
-import { useCategoriesAndBrandsAndProducts } from "../../hooks";
 import { useNavigate } from "react-router-dom";
-import { useFilter } from "../../context/index";
+import { useFilter, useData } from "../../context/index";
 
 export function Categories() {
-  const { categoriesData } = useCategoriesAndBrandsAndProducts();
+  const { categoriesData } = useData();
   const navigate = useNavigate();
   const { filterState, filterDispatch } = useFilter();
 
