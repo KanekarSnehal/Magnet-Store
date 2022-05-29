@@ -12,6 +12,7 @@ import {
   ProfileDetails,
   Address,
   Orders,
+  Checkout,
 } from "./pages/index";
 import Mockman from "mockman-js";
 import { ProtectedRoute } from "./utilities/routes";
@@ -28,6 +29,7 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Whishlist />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/profile" element={<Profile />}>
             <Route path="/profile" element={<ProfileDetails />} />
             <Route path="/profile/address" element={<Address />} />
