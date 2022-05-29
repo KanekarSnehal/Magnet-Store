@@ -1,6 +1,7 @@
 import React from "react";
 import { useUserData } from "../../context/index";
 import { cartDetailsCalculator } from "./helper";
+import { useNavigate } from "react-router-dom";
 
 export function CartBillBoard() {
   const {
@@ -8,7 +9,7 @@ export function CartBillBoard() {
       userCart: { cart },
     },
   } = useUserData();
-
+  const navigate = useNavigate();
   const { totalMRP, discountOnMRP, quantity } = cartDetailsCalculator(cart);
   const totalAmount = totalMRP - discountOnMRP;
 
@@ -42,7 +43,12 @@ export function CartBillBoard() {
           <p className="secondary-text-color">Rs.{totalAmount}</p>
         </div>
         <div className="btn-container">
-          <button className="btn primary-btn">PLACE ORDER</button>
+          <button
+            className="btn primary-btn"
+            onClick={() => navigate("/checkout")}
+          >
+            CHECKOUT
+          </button>
         </div>
       </div>
     </>
