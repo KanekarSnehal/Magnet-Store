@@ -4,6 +4,7 @@ import { useUserData } from "../../context";
 import "./checkout.css";
 import { cartDetailsCalculator } from "../../components/CartBillBoard/helper";
 import { useNavigate } from "react-router-dom";
+import { usePaymentIntegration } from "../../hooks";
 
 export const Checkout = () => {
   const {
@@ -11,10 +12,16 @@ export const Checkout = () => {
       userCart: { cart },
       userAddress: { addresses },
     },
+    orderAddress,
   } = useUserData();
+
   const { totalMRP, discountOnMRP, quantity } = cartDetailsCalculator(cart);
   const totalAmount = totalMRP - discountOnMRP;
   const navigate = useNavigate();
+  const { displayRazorpay } = usePaymentIntegration();
+  const placeOrderHanlder = () => {
+    orderAddress ? displayRazorpay() : alert("Please select order address");
+  };
 
   return (
     <>
@@ -81,16 +88,22 @@ export const Checkout = () => {
           <div className="checkout-summary-container">
             <h6>DELIVER TO</h6>
             <div className="filter-divider-line"></div>
-            <span className="text-container">
-              <p className="text-bold-weight">Snehal kanekar</p>
-              <p>kokan nagar</p>
-              <p>mumbai</p>
-              <p>Maharashtra</p>
-              <p>400078</p>
-              <p>Phone number: 7506873127</p>
-            </span>
+            {orderAddress ? (
+              <span className="text-container">
+                <p className="text-bold-weight">{orderAddress?.name}</p>
+                <p>{orderAddress?.street}</p>
+                <p>{orderAddress?.city}</p>
+                <p>{orderAddress?.state}</p>
+                <p>{orderAddress.zipCode}</p>
+                <p>Phone number: {orderAddress.mobile}</p>
+              </span>
+            ) : (
+              <p>Please select address to deliver</p>
+            )}
           </div>
-          <button className="btn primary-btn">PLACE ORDER</button>
+          <button className="btn primary-btn" onClick={placeOrderHanlder}>
+            PLACE ORDER
+          </button>
         </div>
       </div>
     </>

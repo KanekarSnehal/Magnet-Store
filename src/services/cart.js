@@ -58,7 +58,7 @@ export const decrementCartItem = async (id, userDispatch) => {
 
 export const clearCart = async (userDispatch) => {
   try {
-    const { data } = await axios.post(`${cartUrl}/clearCart`, getConfig());
+    const { data } = await axios.post(`${cartUrl}/clearCart`, {}, getConfig());
     userDispatch({
       type: cartConstants.CLEAR_CART,
       payload: data.cart,

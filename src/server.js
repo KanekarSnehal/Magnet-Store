@@ -131,10 +131,9 @@ export function makeServer({ environment = "development" } = {}) {
       this.post("/orders", async (req, res) => {
         try {
           const instance = new Razorpay({
-            key_id: process.env.REACT_APP_RAZORPAY_ID,
-            key_secret: process.env.REACT_APP_RAZORPAY_KEY_SECRET,
+            key_id: process.env.REACT_APP_RAZORPAY_KEY_ID,
+            key_secret: process.env.REACT_APP_RAZORPAY_SECRET,
           });
-          console.log("instance", instance.orders);
 
           const options = {
             amount: 100, // amount in smallest currency unit
@@ -144,7 +143,6 @@ export function makeServer({ environment = "development" } = {}) {
           const order = instance.orders.create(options);
 
           // if (!order) return res.status(500).send("Some error occured");
-          console.log("order", order);
           res.json(order);
         } catch (error) {
           console.log(error);
