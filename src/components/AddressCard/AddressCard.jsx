@@ -5,7 +5,7 @@ import { removeAddress } from "../../services/address";
 
 export const AddressCard = ({ address, isCheckout }) => {
   const { setShowAddressModal, setEditAddress } = useAddress();
-  const { userDispatch, setOrderAddress } = useUserData();
+  const { userDispatch, orderAddress, setOrderAddress } = useUserData();
 
   return (
     <div className="address-container">
@@ -13,7 +13,11 @@ export const AddressCard = ({ address, isCheckout }) => {
         <input
           type="radio"
           className="input-checkbox"
-          onClick={() => setOrderAddress(address)}
+          name="order-address"
+          // value={address._id}
+          id={address._id}
+          checked={address._id === orderAddress?._id}
+          onChange={() => setOrderAddress(address)}
         />
       )}
       <span className="text-container">
