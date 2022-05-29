@@ -9,13 +9,14 @@ export const Address = () => {
       userAddress: { addresses },
     },
   } = useUserData();
-  const { showAddressModal, setShowAddressModal, editAddress, setEditAddress } =
-    useAddress();
+  const { showAddressModal, setShowAddressModal } = useAddress();
 
   return (
     <div className="address-page-container">
       {addresses &&
-        addresses.map((address) => <AddressCard address={address} />)}
+        addresses.map((address) => (
+          <AddressCard address={address} key={address._id} />
+        ))}
       <button
         className="btn primary-btn"
         onClick={() => setShowAddressModal(true)}

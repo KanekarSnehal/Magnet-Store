@@ -4,7 +4,7 @@ import { useAddress } from "../../context";
 import { useAddressHandler } from "../../hooks";
 
 export const AddressForm = () => {
-  const { setShowAddressModal, editAddress, setEditAddress } = useAddress();
+  const { setShowAddressModal, editAddress } = useAddress();
   const {
     formData,
     formDispatch,

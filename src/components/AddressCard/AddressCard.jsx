@@ -4,8 +4,7 @@ import { useAddress, useUserData } from "../../context";
 import { removeAddress } from "../../services/address";
 
 export const AddressCard = ({ address }) => {
-  const { showAddressModal, setShowAddressModal, editAddress, setEditAddress } =
-    useAddress();
+  const { setShowAddressModal, setEditAddress } = useAddress();
   const { userDispatch } = useUserData();
 
   return (
