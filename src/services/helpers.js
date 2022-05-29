@@ -8,3 +8,4 @@ export const addressUrl = "/api/user/address";
 export const productUrl = "/api/products";
 export const categoriesUrl = "/api/categories";
 export const brandsUrl = "/api/brands";
+export const ordersUrl = "/api/user/orders";
