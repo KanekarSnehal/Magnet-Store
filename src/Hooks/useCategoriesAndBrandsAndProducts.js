@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const useCategoriesAndBrandsAndProducts = () => {
+export const useCategoriesAndBrandsAndProducts = () => {
   const [categoriesData, setCategoriesData] = useState([]);
   const [brandsData, setBrandsData] = useState([]);
   const [products, setProducts] = useState([]);
@@ -36,4 +36,3 @@ const useCategoriesAndBrandsAndProducts = () => {
 
   return { categoriesData, brandsData, products };
 };
-export { useCategoriesAndBrandsAndProducts };

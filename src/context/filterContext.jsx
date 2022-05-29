@@ -8,7 +8,7 @@ import {
   filterByBrandsAndCategories,
   searchByKey,
 } from "../utilities/index";
-import { useCategoriesAndBrandsAndProducts } from "../Hooks/useCategoriesAndBrandsAndProducts";
+import { useCategoriesAndBrandsAndProducts } from "../hooks";
 
 const FilterContext = createContext();
 const useFilter = () => useContext(FilterContext);
