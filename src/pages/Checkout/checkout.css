@@ -1,6 +1,6 @@
 .checkout-container{
     display: flex;
-    gap: 2rem;
+    gap: 5rem;
     margin: auto;
     justify-content: center;
     padding: 1.5rem;
@@ -29,3 +29,11 @@
     width: 16rem;
 }
 
+@media screen and (max-width:768px){
+    .checkout-container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+}

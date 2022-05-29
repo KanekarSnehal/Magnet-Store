@@ -28,6 +28,7 @@ export const Checkout = () => {
       <Header />
       <div className="checkout-container">
         <div className="address-page-container">
+          <h6 className="text-center">SELECT ADDRESS</h6>
           {addresses.length !== 0 ? (
             addresses.map((address) => (
               <AddressCard address={address} key={address._id} isCheckout />
