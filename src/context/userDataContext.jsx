@@ -11,7 +11,7 @@ const UserDataProvider = ({ children }) => {
     userDataInitialState
   );
 
-  const [orderAddress, setOrderAddress] = useState({});
+  const [orderAddress, setOrderAddress] = useState(null);
 
   return (
     <UserDataContext.Provider
