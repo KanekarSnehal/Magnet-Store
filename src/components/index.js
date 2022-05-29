@@ -5,7 +5,5 @@ export { CartItems } from "./CartItems/CartItems";
 export { CartBillBoard } from "./CartBillBoard/CartBillBoard";
 export { WishlistItems } from "./WishlistItems/WishlistItems";
 export { Loader } from "./Loader/Loader";
-export { AddressCard } from "./AddressCard/AddressCard";
-export { AddressSelectList } from "./AddressSelectList/AddressSelectList";
-export { Address } from "./Address/Address";
 export { AddressForm } from "./AddressForm/AddressForm";
+export { AddressCard } from "./AddressCard/AddressCard";
