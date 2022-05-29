@@ -26,6 +26,6 @@ export const addressConstants = {
 
 export const orderConstants = {
   ORDER_LOADING: "ORDER_LOADING",
-  GET_ORDERS: "GET_ORDERS",
-  ORDER_ERROR: "ORDER_ERROR",
+  ADD_ORDER_ITEM: "ADD_ORDER_ITEM",
+  GET_ORDER_ITEMS: "GET_ORDER_ITEMS",
 };

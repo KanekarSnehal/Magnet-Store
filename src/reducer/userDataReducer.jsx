@@ -30,6 +30,8 @@ const {
   ADDRESS_LOADING,
 } = addressConstants;
 
+const { ORDER_LOADING, ADD_ORDER_ITEM, GET_ORDER_ITEMS } = orderConstants;
+
 export const UserDataReducer = (userDataState, userDataAction) => {
   const { type, payload } = userDataAction;
   switch (type) {
@@ -82,6 +84,20 @@ export const UserDataReducer = (userDataState, userDataAction) => {
         userAddress: {
           ...userDataState.userAddress,
           loading: !userDataState.userAddress.loading,
+        },
+      };
+    case ADD_ORDER_ITEM:
+    case GET_ORDER_ITEMS:
+      return {
+        ...userDataState,
+        userOrders: { ...userDataState.userOrders, orders: payload },
+      };
+    case ORDER_LOADING:
+      return {
+        ...userDataState,
+        userOrders: {
+          ...userDataState.userOrders,
+          loading: !userDataState.userOrders.loading,
         },
       };
   }
