@@ -12,7 +12,9 @@ export default function ProductsCards() {
     },
     userDispatch,
   } = useUserData();
-  const { isAuthenticated } = useAuthContext();
+  const {
+    authState: { authToken },
+  } = useAuthContext();
 
   const navigate = useNavigate();
   return (
@@ -47,7 +49,7 @@ export default function ProductsCards() {
                   <i
                     className="far fa-heart number-badge-iframe badge-lg-size cursor-pointer"
                     onClick={() => {
-                      isAuthenticated
+                      authToken
                         ? addToWishlist(product, userDispatch)
                         : navigate("/login");
                     }}
@@ -93,7 +95,7 @@ export default function ProductsCards() {
                     <button
                       className="btn primary-btn mr-16"
                       onClick={() => {
-                        isAuthenticated
+                        authToken
                           ? addToCart(product, userDispatch)
                           : navigate("/login");
                       }}

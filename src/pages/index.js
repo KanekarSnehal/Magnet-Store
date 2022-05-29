@@ -5,3 +5,7 @@ export { Whishlist } from "./Whishlist/Whishlist";
 export { Products } from "./Products/Products";
 export { Cart } from "./Cart/Cart";
 export { SingleProductPage } from "./SingleProductPage/SingleProductPage";
+export { Profile } from "./Profile/Profile";
+export { ProfileDetails } from "./ProfileDetails/ProfileDetails";
+export { Address } from "./Address/Address";
+export { Orders } from "./Orders/Orders";

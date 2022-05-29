@@ -11,7 +11,6 @@ export const SingleProductPage = () => {
   const { productId } = useParams();
   const [singleProduct, setSingleProduct] = useState({});
   const [loading, setLoading] = useState(true);
-  const { isAuthenticated } = useAuthContext();
   const {
     userState: {
       userWishlist: { wishlist },
@@ -19,6 +18,9 @@ export const SingleProductPage = () => {
     },
     userDispatch,
   } = useUserData();
+  const {
+    authState: { authToken },
+  } = useAuthContext();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -105,7 +107,7 @@ export const SingleProductPage = () => {
               <button
                 className="btn primary-btn mr-16"
                 onClick={() => {
-                  isAuthenticated
+                  authToken
                     ? addToCart(singleProduct, userDispatch)
                     : navigate("/login");
                 }}
@@ -130,7 +132,7 @@ export const SingleProductPage = () => {
               <button
                 className="btn outline-secondary-btn mr-16"
                 onClick={() => {
-                  isAuthenticated
+                  authToken
                     ? addToWishlist(singleProduct, userDispatch)
                     : navigate("/login");
                 }}

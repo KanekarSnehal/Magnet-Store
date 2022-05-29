@@ -1,10 +1,9 @@
 import React from "react";
-import { useCategoriesAndBrandsAndProducts } from "../../Hooks/useCategoriesAndBrandsAndProducts";
 import "./ProductsFilter.css";
-import { useFilter } from "../../context/index";
+import { useFilter, useData } from "../../context/index";
 
 export default function ProductsFilter() {
-  const { categoriesData, brandsData } = useCategoriesAndBrandsAndProducts();
+  const { categoriesData, brandsData } = useData();
   const { filterState, filterDispatch } = useFilter();
 
   const {

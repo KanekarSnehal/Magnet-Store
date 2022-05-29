@@ -8,7 +8,7 @@ import {
   filterByBrandsAndCategories,
   searchByKey,
 } from "../utilities/index";
-import { useCategoriesAndBrandsAndProducts } from "../Hooks/useCategoriesAndBrandsAndProducts";
+import { useData } from "./dataContext";
 
 const FilterContext = createContext();
 const useFilter = () => useContext(FilterContext);
@@ -19,7 +19,7 @@ const FilterProvider = ({ children }) => {
     filtersInitialState
   );
 
-  const { products } = useCategoriesAndBrandsAndProducts();
+  const { products } = useData();
 
   const finalFilteredProducts = getFinalProducts(
     sortByPrice,

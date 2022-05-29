@@ -21,7 +21,10 @@ export function Whishlist() {
         ) : (
           <div className="flex-row">
             {wishlist.map((wishlistItem) => (
-              <WishlistItems key={wishlist._id} wishlistItem={wishlistItem} />
+              <WishlistItems
+                key={wishlistItem._id}
+                wishlistItem={wishlistItem}
+              />
             ))}
           </div>
         )}

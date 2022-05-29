@@ -1,50 +1,39 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-import { AddressSelectList } from "../index";
-import "./address-card.css";
+import React from "react";
+import "./address.css";
+import { useAddress, useUserData } from "../../context";
+import { removeAddress } from "../../services/address";
 
-export const AddressCard = () => {
-  const [showList, setShowList] = useState(false);
-  const [selectedAddress, setSelectedAddress] = useState(null);
-  const [addresses, setAddresses] = useState([]);
+export const AddressCard = ({ address }) => {
+  const { setShowAddressModal, setEditAddress } = useAddress();
+  const { userDispatch } = useUserData();
 
-  const encodedToken = localStorage.getItem("token");
-  useEffect(async () => {
-    try {
-      const { data } = await axios.get("api/user/address", {
-        headers: { authorization: encodedToken },
-      });
-      setAddresses(data.addressList);
-    } catch (e) {
-      console.log(e);
-    }
-  }, []);
   return (
-    <>
-      <div className="address-card-container">
-        <div className="display-flex-row">
-          <span>Deliver to:</span>
-          <span className="mx-8">John Doe </span>
-          <span>400078</span>
-
+    <div className="address-container">
+      <span className="text-container">
+        <p className="text-bold-weight">{address.name}</p>
+        <p>{address.street}</p>
+        <p>{address.city}</p>
+        <p>{address.state}</p>
+        <p>{address.zipCode}</p>
+        <p>Phone number: {address.mobile}</p>
+        <div>
           <button
-            className="btn-special ml-auto outline-secondary-btn"
-            onClick={() => setShowList(true)}
+            className="btn primary-btn"
+            onClick={() => {
+              setShowAddressModal(true);
+              setEditAddress(address);
+            }}
           >
-            Change
+            Edit
+          </button>
+          <button
+            className="btn outline-secondary-btn"
+            onClick={() => removeAddress(address._id, userDispatch)}
+          >
+            Remove
           </button>
         </div>
-
-        <div className="my-8">
-          Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016
-        </div>
-      </div>
-      {showList && (
-        <AddressSelectList
-          setShowList={setShowList}
-          setSelectedAddress={setSelectedAddress}
-        />
-      )}
-    </>
+      </span>
+    </div>
   );
 };

@@ -2,13 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { Header } from "../../components/index";
 import "./auth.css";
-import { authActionsConstants } from "../../reducer/index";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/index";
 import { useNavigate } from "react-router-dom";
 
 export function Signup() {
-  const { authDispatch } = useAuthContext();
+  const { authState, setAuthState } = useAuthContext();
   const [userInfo, setUserInfo] = useState({
     firstName: "",
     lastName: "",
@@ -34,16 +33,15 @@ export function Signup() {
       });
 
       localStorage.setItem("token", data.encodedToken);
-      authDispatch({
-        type: authActionsConstants.GET_USER_DETAILS,
-        payload: data.createdUser,
+      setAuthState({
+        ...authState,
+        authToken: data.encodedToken,
+        authUser: data.foundUser,
+        loading: false,
       });
       navigate("/login");
-    } catch {
-      authDispatch({
-        type: authActionsConstants.USER_SIGNUP_FAILURE,
-        payload: `Couldn't Signup, Please try again ${error.message}`,
-      });
+    } catch (e) {
+      console.log(e);
     }
   };
 

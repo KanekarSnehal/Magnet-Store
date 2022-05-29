@@ -5,3 +5,4 @@ export {
   incrementCartItem,
   decrementCartItem,
 } from "./cart";
+export { getProducts, getCategories, getBrands } from "./products";

@@ -1,0 +1,43 @@
+.address-container{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 20rem;
+    gap: 1rem;
+    box-shadow: #32325d40 0px 6px 12px -2px, #0000004d 0px 3px 7px -3px;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+.text-container{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.text-container p{
+    margin: 0;
+}
+
+.address-container .btn{
+    width: auto;
+}
+
+.input-checkbox {
+     margin-right: 0; 
+     margin-top: 0.2rem;
+}
+
+.address-card-container{
+    width: 50%;
+    border: 2px solid gray;
+    padding: 0.5rem;
+    margin:0 auto 2rem auto;
+    border-radius: 0.5rem;
+}
+
+@media screen and (max-width:768px){
+    .address-card-container{
+        width: 100%;
+    }
+}

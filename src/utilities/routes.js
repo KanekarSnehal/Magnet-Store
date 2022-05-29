@@ -2,10 +2,12 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuthContext } from "../context/index";
 
 export const ProtectedRoute = () => {
-  const { isAuthenticated } = useAuthContext();
+  const {
+    authState: { authToken },
+  } = useAuthContext();
   const location = useLocation();
 
-  return isAuthenticated ? (
+  return authToken ? (
     <Outlet />
   ) : (
     <Navigate to={"/login"} state={{ from: location }} replace />
