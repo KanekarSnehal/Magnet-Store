@@ -30,6 +30,17 @@ export function Products() {
       <Header />
       <ProductsFilter />
       <main className="main-container">
+        <div className="products-container">
+          {loading ? (
+            <Loader />
+          ) : finalFilteredProducts.length === 0 ? (
+            <h1>No Products Found</h1>
+          ) : (
+            paginatedProducts.map((product) => (
+              <ProductsCards product={product} />
+            ))
+          )}
+        </div>
         {totalPages > 1 ? (
           <div className="paginate-container">
             <button
@@ -67,17 +78,6 @@ export function Products() {
             </button>
           </div>
         ) : null}
-        <div className="products-container">
-          {loading ? (
-            <Loader />
-          ) : finalFilteredProducts.length === 0 ? (
-            <h1>No Products Found</h1>
-          ) : (
-            paginatedProducts.map((product) => (
-              <ProductsCards product={product} />
-            ))
-          )}
-        </div>
       </main>
     </div>
   );
