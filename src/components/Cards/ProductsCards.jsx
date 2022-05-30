@@ -53,7 +53,6 @@ export default function ProductsCards({ product }) {
           >
             {product.title}
           </h6>
-          {/* <p className="card-info p-sm">{product.description}</p> */}
           <p className="text-bold-weight">
             Rs.
             {Number(product.price) -

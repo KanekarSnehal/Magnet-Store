@@ -10,12 +10,11 @@ export function Products() {
   const {
     productState: { loading },
   } = useData();
-  const productsPerPage = 4;
+  const productsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  console.log(totalPages);
+
   useEffect(() => {
-    console.log("here");
     if (finalFilteredProducts.length > 0)
       setTotalPages(Math.ceil(finalFilteredProducts.length / productsPerPage));
     setCurrentPage(1);
@@ -37,7 +36,7 @@ export function Products() {
             <h1>No Products Found</h1>
           ) : (
             paginatedProducts.map((product) => (
-              <ProductsCards product={product} />
+              <ProductsCards product={product} key={product._id} />
             ))
           )}
         </div>
