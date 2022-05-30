@@ -39,7 +39,7 @@ export const addItemToOrdersHandler = function (schema, request) {
       );
     }
     const userOrders = schema.users.findBy({ _id: userId }).orders;
-    const order = JSON.parse(request.requestBody);
+    const { order } = JSON.parse(request.requestBody);
     userOrders.unshift({
       createdAt: formatDate(),
       ...order,

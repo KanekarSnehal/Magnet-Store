@@ -70,7 +70,7 @@ export const usePaymentIntegration = () => {
       },
       prefill: {
         name: orderAddress.name,
-        email: authUser.email,
+        email: "karenbrewer12@gmail.com",
         contact: orderAddress.mobile,
       },
       notes: {
