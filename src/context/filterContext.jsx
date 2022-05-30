@@ -19,7 +19,9 @@ const FilterProvider = ({ children }) => {
     filtersInitialState
   );
 
-  const { products } = useData();
+  const {
+    productState: { products },
+  } = useData();
 
   const finalFilteredProducts = getFinalProducts(
     sortByPrice,
