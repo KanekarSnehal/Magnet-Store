@@ -35,6 +35,34 @@ export const products = [
     img: "https://cdn.shopify.com/s/files/1/2690/0106/products/DSCF7796_700x.jpg?v=1640747254",
   },
   {
+    _id: "15P",
+    title: "Nitori 26 Piece Snack Set For 6",
+    inStock: true,
+    fastDelivery: false,
+    categoryName: "Dinner Set",
+    brandName: "Milton",
+    price: 5000,
+    discount: 20,
+    ratings: 5,
+    description:
+      "The Nitori series is a timeless representation of the peace and calm that the seashores provide us with any time we go. We may now have a tranquil atmosphere at home, right at the dinner table. The azure-painted plates and bowls are soothing to the spirit since they enhance the flavor of the food served on them. 2 spiral diamond plates, 2 polka dots diamond plates, 2 teardrop diamond plates, 2 teardrops hexagon plates, 2 spirals hexagon plates, 2 polka dots hexagon plates, 2 spiral soup/ramen bowls, 2 teardrop soup/ramen bowl, 2 polka dots soup/ramen bowl, 2 teardrop soup spoons, 2 dots soup spoons, 2 spiral soup spoons, 1 spiral serving bowl, and 1 spiral serving spoon are included in the set.",
+    img: "https://res.cloudinary.com/dflebgpde/image/upload/v1653923483/magnet-store/bowls/DSC00510_9c9df773-4bbe-43d8-962f-61ea44c1d935_900x_o6ub7a.jpg",
+  },
+  {
+    _id: "13P",
+    title: "Purple Textured Glass Dispenser",
+    inStock: false,
+    fastDelivery: false,
+    categoryName: "Glassware",
+    brandName: "Clay Craft",
+    price: 1500,
+    discount: 5,
+    ratings: 1,
+    description:
+      "For a modern bathroom setup, the captivating majestic purple textured glass soap dispenser with a gold nozzle should be the most intriguing bathroom element. It may also be used to store body wash, with the nozzle allowing for safe handling and flow when pouring on a sponge. The majestic purple textured glass dispenser is carved with a charismatic linear pattern alignment, making it a hot favorite.",
+    img: "https://res.cloudinary.com/dflebgpde/image/upload/v1653922145/magnet-store/bowls/DSCF3792_58a1e8f8-14fe-43ff-880e-8db555f92857_900x_km62rv.jpg",
+  },
+  {
     _id: "3P",
     title: "Swirl Plates",
     inStock: false,
@@ -50,8 +78,8 @@ export const products = [
   },
   {
     _id: "4P",
-    title: "Orange Crokery Fiesta",
-    inStock: false,
+    title: "Floral Dinner Plate",
+    inStock: true,
     fastDelivery: true,
     categoryName: "Dinner Set",
     brandName: "Clay Craft",
@@ -59,10 +87,24 @@ export const products = [
     discount: 12,
     ratings: 5,
     description:
-      "Side bowl and serving bowl from the abstract collection. The bowls can be used as soup bowls, curry bowls or rice bowls.",
-    img: "https://cdn.shopify.com/s/files/1/2690/0106/products/Orangecrockery_2_700x.jpg?v=1613994929",
+      "The floral plate has a blend of vibrant colors as well as a gold rim for added elegance. The plates come in two sizes, and the big dinner plate may be combined with the collection's side plates. The flowery plates are suitable for serving main courses, baked foods, breakfast, and appetizers. The beautiful table decor is enhanced by the delicate floral print along the plate's periphery.",
+    img: "https://res.cloudinary.com/dflebgpde/image/upload/v1653924074/magnet-store/bowls/m21nsa5526_900x_ahujaf.png",
   },
 
+  {
+    _id: "17P",
+    title: "Ombre Snack Plate",
+    inStock: true,
+    fastDelivery: true,
+    categoryName: "Plates",
+    brandName: "Borosil",
+    price: 3000,
+    discount: 10,
+    ratings: 3,
+    description:
+      "The ombre snack plate, crafted in ceramic, lends a royal vibe to the dining table. The gold rim plate can be used as an appetizer plate, a starter plate, or as a side plate during a get-together or house party. Available in two soothing shades, the ombre ceramic plates with a gold rim make them a brilliant choice for a dinner set. The ombre plate adds a touch of creativity to any table setting.",
+    img: "https://res.cloudinary.com/dflebgpde/image/upload/v1653924649/magnet-store/bowls/DSC07294_4f0f987d-a439-49ca-bfdc-7edc28bc4854_900x_dt6ljq.jpg",
+  },
   {
     _id: "5P",
     title: "Natura Bowls Black",
@@ -76,6 +118,21 @@ export const products = [
     description:
       "Side bowl and serving bowl from the abstract collection. The bowls can be used as soup bowls, curry bowls or rice bowls.",
     img: "https://cdn.shopify.com/s/files/1/2690/0106/products/NaturaBowlsBlack_1_700x.jpg?v=1614405868",
+  },
+
+  {
+    _id: "16P",
+    title: "Pink Dino Meal Set",
+    inStock: true,
+    fastDelivery: false,
+    categoryName: "Dinner Set",
+    brandName: "Treo",
+    price: 2550,
+    discount: 5,
+    ratings: 4,
+    description:
+      "The plate, cup, spoon, and bowl set in the color combination pink, white, and black is designed to engage children as they consume meals and hence get their daily dose of nutrients. Featuring adorable monster faces on all its components, all the different parts of the set can be used separately. The plate may be used as a dinner plate, breakfast plate, or snack plate. The mug can be used to serve tea, coffee, or flavored milk. Similarly, the bowl can be used to serve lentils, curries, ramen, noodles, chips, or popcorn. ",
+    img: "https://res.cloudinary.com/dflebgpde/image/upload/v1653923779/magnet-store/bowls/DSC05614_0ba175e3-bf07-4e41-8752-d09b69334847_900x_ps5iaa.jpg",
   },
   {
     _id: "6P",
@@ -106,6 +163,34 @@ export const products = [
     img: "https://i.ibb.co/j6JtKKz/glassware.jpg",
   },
   {
+    _id: "10P",
+    title: "Siena Cake Bowls",
+    inStock: true,
+    fastDelivery: false,
+    categoryName: "Bowls",
+    brandName: "Borosil",
+    price: 2500,
+    discount: 10,
+    ratings: 5,
+    description:
+      "Cake pan made in ceramic that is colorful, fruity and flowery on the inner surface with a white exterior. The baking trays for cake are round in shape and are available in different styles. Bake a chocolate cake or a vanilla cake or a red velvet cake for the dear ones on birthdays, anniversaries or simply without any occasion. Pasta, salads, kebabs, desserts, and more can be baked, and served in the round bowls. Both sides of the ceramic bowls have handles, making them convenient to hold and serve. ",
+    img: "https://res.cloudinary.com/dflebgpde/image/upload/v1653919422/magnet-store/bowls/CakePan_27_900x_zazb5g.jpg",
+  },
+  {
+    _id: "18P",
+    title: "Earl Grey Glass Tea Cup Set of 4",
+    inStock: true,
+    fastDelivery: false,
+    categoryName: "Glassware",
+    brandName: "Treo",
+    price: 2550,
+    discount: 15,
+    ratings: 4,
+    description:
+      "When one offers beverages to guests in the uniquely shaped and textured cup set, friends and guests are sure to be impressed. The opaque surface of the cups gives the beverages a more vivid and appetizing appearance. The glassware allows one to leave an indelible impression on everybody who sips deliciously concocted tea or coffee from the glass cup. This glass cup set of 4 will beautify the tabletop while helping one serve drinks in style.",
+    img: "https://res.cloudinary.com/dflebgpde/image/upload/v1653924831/magnet-store/bowls/DSC_1380-Edit_900x_da9xkt.jpg",
+  },
+  {
     _id: "8P",
     title: "Classic Plates",
     inStock: true,
@@ -121,7 +206,7 @@ export const products = [
   },
   {
     _id: "9P",
-    title: "Siena Dinner Plate",
+    title: "Siena Dinner Set",
     inStock: true,
     fastDelivery: true,
     categoryName: "Dinner Set",
@@ -132,5 +217,48 @@ export const products = [
     description:
       "Siena dinner plates are ceramic plates that come in colour combinations of black and white with a striped pattern.",
     img: "https://i.ibb.co/CmbMbLv/dinner-set.jpg",
+  },
+
+  {
+    _id: "11P",
+    title: "Bowl Ceramic",
+    inStock: true,
+    fastDelivery: true,
+    categoryName: "Bowls",
+    brandName: "Treo",
+    price: 1000,
+    discount: 10,
+    ratings: 4,
+    description:
+      "A ceramic bowl that can be used as a salad bowl, soup bowl or curry bowl and for serving snacks, fruits or desserts and can also be used for baking and grilling. The fine textured lines on the surface of the bowl adds convenience and make a table setting look elegant. The bowls are microwave and oven safe.",
+    img: "https://res.cloudinary.com/dflebgpde/image/upload/v1653919301/magnet-store/bowls/CeramicBowl_2_200x_pwpgum.png",
+  },
+  {
+    _id: "14P",
+    title: "Colourful Plates",
+    inStock: true,
+    fastDelivery: true,
+    categoryName: "Plates",
+    brandName: "Clay Craft",
+    price: 1000,
+    discount: 5,
+    ratings: 3,
+    description:
+      "Ceramic colourful plates with an abstract water colour painting print that comes in two different sizes. The plates can be used as dinner plates, snack plates, starter plates or to create a complete dinner set. Vibrant crockery can help to add freshness and cheer to any table setting. ",
+    img: "https://res.cloudinary.com/dflebgpde/image/upload/v1653923194/magnet-store/bowls/ColourfulPlates-Pink7_900x_qfzj8j.jpg",
+  },
+  {
+    _id: "12P",
+    title: "Pear Shaped Glass Jar Small",
+    inStock: true,
+    fastDelivery: false,
+    categoryName: "Glassware",
+    brandName: "Milton",
+    price: 3500,
+    discount: 15,
+    ratings: 4,
+    description:
+      "Fond of making Italian cuisine at home but still storing pasta in their wrappers? Say hello to airtight glass jars perfect for keeping all kinds of pasta fresh and ready to cook. The bamboo lid glass jar is durable and made of food-grade materials to ensure every bite is just as safe as it is healthy. In the long term, the reusable glass jar is a more sustainable option. The glass jar has a pear-like curve that makes it a unique addition to any kitchen or table. The jar's simplicity is what gives it its elegance and modern appeal.",
+    img: "https://res.cloudinary.com/dflebgpde/image/upload/v1653921745/magnet-store/bowls/M21nsa89299_900x_cgjtyi.jpg",
   },
 ];

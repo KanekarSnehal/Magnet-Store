@@ -111,3 +111,7 @@ li{
   border-radius: 0.5rem;
   cursor: pointer;
 }
+
+.disabled-cursor{
+  cursor: not-allowed;
+}

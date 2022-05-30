@@ -8,16 +8,19 @@ const useData = () => useContext(DataContext);
 const DataProvider = ({ children }) => {
   const [categoriesData, setCategoriesData] = useState([]);
   const [brandsData, setBrandsData] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [productState, setProducts] = useState({
+    products: [],
+    loading: false,
+  });
 
   useEffect(() => {
-    getProducts(setProducts);
+    getProducts(productState, setProducts);
     getCategories(setCategoriesData);
     getBrands(setBrandsData);
   }, []);
 
   return (
-    <DataContext.Provider value={{ categoriesData, brandsData, products }}>
+    <DataContext.Provider value={{ categoriesData, brandsData, productState }}>
       {children}
     </DataContext.Provider>
   );

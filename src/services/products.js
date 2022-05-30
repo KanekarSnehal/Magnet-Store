@@ -1,11 +1,13 @@
 import { productUrl, categoriesUrl, brandsUrl } from "./helpers";
 import axios from "axios";
 
-export const getProducts = async (setProducts) => {
+export const getProducts = async (productState, setProducts) => {
   try {
+    setProducts({ ...productState, loading: true });
     const { data } = await axios.get(productUrl);
-    setProducts(data.products);
+    setProducts({ ...productState, products: data.products, loading: false });
   } catch (error) {
+    setProducts({ ...productState, loading: false });
     console.log(error);
   }
 };
