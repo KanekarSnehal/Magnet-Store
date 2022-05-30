@@ -7,7 +7,7 @@ const useAuthContext = () => useContext(AuthContext);
 const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState({
     authToken: localStorage.getItem("magnetStoreToken") || null,
-    authUser: localStorage.getItem("magnetStoreUser") || null,
+    authUser: JSON.parse(localStorage.getItem("magnetStoreUser")) || null,
     loading: false,
   });
 

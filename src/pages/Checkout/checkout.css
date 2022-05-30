@@ -1,0 +1,39 @@
+.checkout-container{
+    display: flex;
+    gap: 5rem;
+    margin: auto;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.checkout-summary-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+}
+
+.checkout-items{
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.items-row{
+    display: flex;
+}
+
+.items-row> :first-child{
+    width: 16rem;
+}
+
+@media screen and (max-width:768px){
+    .checkout-container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+}

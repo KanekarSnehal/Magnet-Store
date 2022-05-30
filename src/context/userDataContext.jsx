@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useEffect } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 import { userDataInitialState } from "../utilities";
 import { UserDataReducer } from "../reducer";
 
@@ -11,8 +11,12 @@ const UserDataProvider = ({ children }) => {
     userDataInitialState
   );
 
+  const [orderAddress, setOrderAddress] = useState(null);
+
   return (
-    <UserDataContext.Provider value={{ userState, userDispatch }}>
+    <UserDataContext.Provider
+      value={{ userState, userDispatch, orderAddress, setOrderAddress }}
+    >
       {children}
     </UserDataContext.Provider>
   );

@@ -55,3 +55,15 @@ export const decrementCartItem = async (id, userDispatch) => {
     });
   } catch (error) {}
 };
+
+export const clearCart = async (userDispatch) => {
+  try {
+    const { data } = await axios.post(`${cartUrl}/clearCart`, {}, getConfig());
+    userDispatch({
+      type: cartConstants.CLEAR_CART,
+      payload: data.cart,
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};

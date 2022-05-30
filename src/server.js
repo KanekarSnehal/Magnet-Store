@@ -8,6 +8,7 @@ import {
   getCartItemsHandler,
   removeItemFromCartHandler,
   updateCartItemHandler,
+  clearCartHandler,
 } from "./backend/controllers/CartController";
 import {
   getAllCategoriesHandler,
@@ -28,13 +29,19 @@ import {
   removeAddressHandler,
   updateAddressHandler,
 } from "./backend/controllers/AddressController";
+import {
+  getOrderItemsHandler,
+  addItemToOrdersHandler,
+} from "./backend/controllers/OrdersController";
 
 import { categories } from "./backend/db/categories";
 import { products } from "./backend/db/products";
 import { users } from "./backend/db/users";
 import { brands } from "./backend/db/brands";
 import { getBrandHandler } from "./backend/controllers/BrandController";
+
 export function makeServer({ environment = "development" } = {}) {
+  const Razorpay = require("razorpay");
   return new Server({
     serializers: {
       application: RestSerializer,
@@ -48,6 +55,7 @@ export function makeServer({ environment = "development" } = {}) {
       wishlist: Model,
       brand: Model,
       addressList: Model,
+      orders: Model,
     },
 
     // Runs on the start of the server
@@ -68,6 +76,7 @@ export function makeServer({ environment = "development" } = {}) {
           cart: [],
           wishlist: [],
           addressList: [],
+          orders: [],
         })
       );
 
@@ -99,6 +108,7 @@ export function makeServer({ environment = "development" } = {}) {
         "/user/cart/:productId",
         removeItemFromCartHandler.bind(this)
       );
+      this.post("/user/cart/clearCart", clearCartHandler.bind(this));
 
       // wishlist routes (private)
       this.get("/user/wishlist", getWishlistItemsHandler.bind(this));
@@ -113,6 +123,31 @@ export function makeServer({ environment = "development" } = {}) {
       this.post("/user/address", addAddressHandler.bind(this));
       this.post("/user/address/:addressId", updateAddressHandler.bind(this));
       this.delete("/user/address/:addressId", removeAddressHandler.bind(this));
+
+      // order routes (private)
+      this.get("/user/orders", getOrderItemsHandler.bind(this));
+      this.post("/user/orders", addItemToOrdersHandler.bind(this));
+
+      this.post("/orders", async (req, res) => {
+        try {
+          const instance = new Razorpay({
+            key_id: process.env.REACT_APP_RAZORPAY_KEY_ID,
+            key_secret: process.env.REACT_APP_RAZORPAY_SECRET,
+          });
+
+          const options = {
+            amount: 100, // amount in smallest currency unit
+            currency: "INR",
+          };
+
+          const order = instance.orders.create(options);
+
+          // if (!order) return res.status(500).send("Some error occured");
+          res.json(order);
+        } catch (error) {
+          console.log(error);
+        }
+      });
     },
   });
 }

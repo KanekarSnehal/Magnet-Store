@@ -19,6 +19,7 @@ const {
   DECREMENT_CART_ITEM,
   INCREMENT_CART_ITEM,
   CART_LOADING,
+  CLEAR_CART,
 } = cartConstants;
 
 const {
@@ -28,6 +29,8 @@ const {
   REMOVE_ADDRESS,
   ADDRESS_LOADING,
 } = addressConstants;
+
+const { ORDER_LOADING, ADD_ORDER_ITEM, GET_ORDER_ITEMS } = orderConstants;
 
 export const UserDataReducer = (userDataState, userDataAction) => {
   const { type, payload } = userDataAction;
@@ -53,6 +56,7 @@ export const UserDataReducer = (userDataState, userDataAction) => {
     case REMOVE_FROM_CART:
     case DECREMENT_CART_ITEM:
     case INCREMENT_CART_ITEM:
+    case CLEAR_CART:
       return {
         ...userDataState,
         userCart: { ...userDataState.userCart, cart: payload },
@@ -80,6 +84,20 @@ export const UserDataReducer = (userDataState, userDataAction) => {
         userAddress: {
           ...userDataState.userAddress,
           loading: !userDataState.userAddress.loading,
+        },
+      };
+    case ADD_ORDER_ITEM:
+    case GET_ORDER_ITEMS:
+      return {
+        ...userDataState,
+        userOrders: { ...userDataState.userOrders, orders: payload },
+      };
+    case ORDER_LOADING:
+      return {
+        ...userDataState,
+        userOrders: {
+          ...userDataState.userOrders,
+          loading: !userDataState.userOrders.loading,
         },
       };
   }

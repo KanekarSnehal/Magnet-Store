@@ -4,14 +4,11 @@ import { useAuthContext } from "../../context";
 import { useNavigate } from "react-router-dom";
 
 export const ProfileDetails = () => {
-  const { authState, setAuthState } = useAuthContext();
-  useEffect(() => {
-    localStorage.magnetStoreToken ??
-      setAuthState({
-        ...authState,
-        authUser: localStorage.getItem("magnetStoreUser"),
-      });
-  }, []);
+  const {
+    authState: { authUser },
+    setAuthState,
+  } = useAuthContext();
+
   const navigate = useNavigate();
   const logoutHandler = () => {
     localStorage.removeItem("magnetStoreToken");
@@ -24,11 +21,13 @@ export const ProfileDetails = () => {
     <div className="profile-details-container">
       <p className="profile-info">
         <span>Name</span>
-        <span>Aadarsh Balika</span>
+        <span>
+          {authUser.firstName} {authUser.lastName}
+        </span>
       </p>
       <p className="profile-info">
         <span>Email</span>
-        <span>aadarshbalika@gmail.com</span>
+        <span>{authUser.email}</span>
       </p>
       <button className="btn outline-secondary-btn" onClick={logoutHandler}>
         Logout
