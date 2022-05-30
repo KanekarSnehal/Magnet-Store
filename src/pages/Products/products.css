@@ -10,12 +10,30 @@
 
 .products-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
+  gap: 2rem;
 }
 
 .vertical-card-container .card-content{
   padding: 0.5rem 1rem;
+}
+
+.vertical-card-container {
+  margin: 0;
+}
+
+.paginate-container{
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 2rem;
+}
+
+.paginate-btn{
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.6rem;
+  margin: 0.2rem 0.5rem;
 }
 
 @media screen and (max-width:976px){
