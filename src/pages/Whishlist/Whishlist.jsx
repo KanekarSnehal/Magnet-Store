@@ -19,7 +19,7 @@ export function Whishlist() {
         ) : wishlist.length == 0 ? (
           <h4 className="text-center">No products added...</h4>
         ) : (
-          <div className="flex-row">
+          <div className="products-container">
             {wishlist.map((wishlistItem) => (
               <WishlistItems
                 key={wishlistItem._id}

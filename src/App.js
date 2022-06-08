@@ -17,11 +17,13 @@ import {
 import Mockman from "mockman-js";
 import { ProtectedRoute } from "./utilities/routes";
 import { Toaster } from "react-hot-toast";
+import { ScrollToTop } from "./components";
 
 function App() {
   return (
     <>
       <Router>
+        <ScrollToTop />
         <Toaster
           position="bottom-center"
           gutter={10}

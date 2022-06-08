@@ -7,3 +7,4 @@ export { WishlistItems } from "./WishlistItems/WishlistItems";
 export { Loader } from "./Loader/Loader";
 export { AddressForm } from "./AddressForm/AddressForm";
 export { AddressCard } from "./AddressCard/AddressCard";
+export { ScrollToTop } from "./ScrollToTop/ScrollToTop";
