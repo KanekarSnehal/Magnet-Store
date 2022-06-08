@@ -53,7 +53,7 @@ export function Products() {
             >
               Prev
             </button>
-            {[...Array(totalPages)].map((page, index) => (
+            {[...Array(totalPages)].map((_, index) => (
               <button
                 key={index}
                 className={`paginate-btn ${

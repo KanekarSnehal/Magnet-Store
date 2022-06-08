@@ -47,12 +47,12 @@ export default function ProductsCards({ product }) {
         </div>
 
         <div className="card-content">
-          <h6
+          <p
             className="card-title cursor-pointer"
             onClick={() => navigate(`/product/${product._id}`)}
           >
             {product.title}
-          </h6>
+          </p>
           <p className="text-bold-weight">
             Rs.
             {Number(product.price) -
