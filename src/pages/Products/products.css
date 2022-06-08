@@ -48,6 +48,10 @@
   margin-top: 0.2rem;
 }
 
+.vertical-card-container .card-image {
+  height: 15rem;
+}
+
 @media screen and (max-width:976px){
   .products-page {
     grid-template-columns: 0.5fr 1fr;
