@@ -3,7 +3,7 @@
 <div align="center">
   <img src="public/icon.png" width="150" title="Magnet Store Logo">
 
-## [Magnet Store](https://magnet-store-ecom.netlify.app/)
+## [Magnet Store](https://magnet-store.netlify.app/)
 
 E-commerce application for Crockery.
 
@@ -13,7 +13,7 @@ E-commerce application for Crockery.
 
 ## Deployed Link
 
-Checkout the live demo [here](https://magnet-store-ecom.netlify.app/)
+Checkout the live demo [here](https://magnet-store.netlify.app/)
 
 ---
 
