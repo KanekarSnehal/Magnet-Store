@@ -2,16 +2,16 @@ import React from "react";
 import { useState } from "react";
 import { Header } from "../../components/index";
 import "./auth.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuthContext } from "../../context/index";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export function Login() {
   const { authState, setAuthState } = useAuthContext();
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const navigate = useNavigate();
-
+  const location = useLocation();
   const onChangeHandler = (e) => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
@@ -36,8 +36,9 @@ export function Login() {
         loading: false,
       });
       navigate("/");
-    } catch (error) {
-      console.log(error);
+      toast.success(`Welcome back, ${data.foundUser.firstName}`);
+    } catch (e) {
+      toast.error(e?.response?.data?.message);
     }
   };
   const handleTestLogin = async (e) => {
@@ -60,8 +61,9 @@ export function Login() {
         loading: false,
       });
       navigate("/");
+      toast.success(`Welcome back, ${data.foundUser.firstName}`);
     } catch (error) {
-      console.log(error);
+      toast.error(e?.response?.data?.message);
     }
   };
   return (

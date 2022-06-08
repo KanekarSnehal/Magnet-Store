@@ -1,6 +1,7 @@
 import axios from "axios";
 import { getConfig, wishlistUrl } from "./helpers";
 import { wishlistConstants } from "../reducer";
+import toast from "react-hot-toast";
 
 export const getWishlist = (userDispatch) => {
   try {
@@ -12,7 +13,7 @@ export const getWishlist = (userDispatch) => {
     });
     userDispatch({ type: wishlistConstants.WISHLIST_LOADING });
   } catch (e) {
-    console.log(e);
+    toast.error(e?.response?.data?.message);
   }
 };
 
@@ -23,8 +24,9 @@ export const addToWishlist = async (product, userDispatch) => {
       type: wishlistConstants.ADD_TO_WISHLIST,
       payload: data.wishlist,
     });
+    toast.success("Added to wishlist!");
   } catch (e) {
-    console.log(e);
+    toast.error(e?.response?.data?.message);
   }
 };
 
@@ -35,7 +37,8 @@ export const removeFromWishlist = async (id, userDispatch) => {
       type: wishlistConstants.REMOVE_FROM_WISHLIST,
       payload: data.wishlist,
     });
+    toast.success("Removed from wishlist!");
   } catch (e) {
-    console.log(e);
+    toast.error(e?.response?.data?.message);
   }
 };

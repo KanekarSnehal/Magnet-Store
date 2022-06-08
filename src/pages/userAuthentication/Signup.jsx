@@ -5,6 +5,7 @@ import "./auth.css";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/index";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export function Signup() {
   const { authState, setAuthState } = useAuthContext();
@@ -40,8 +41,9 @@ export function Signup() {
         loading: false,
       });
       navigate("/login");
+      toast.success(`Welcome, ${data.foundUser.firstName}`);
     } catch (e) {
-      console.log(e);
+      toast.error(e?.response?.data?.message);
     }
   };
 
