@@ -1,54 +1,62 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Header } from "../../components/index";
 import "./auth.css";
 import { Link } from "react-router-dom";
-import { useAuthContext } from "../../context/index";
-import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
+import { useSignupHandler } from "../../hooks";
+import { BiShow, BiHide } from "react-icons/bi";
 
 export function Signup() {
-  const { authState, setAuthState } = useAuthContext();
-  const [userInfo, setUserInfo] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
-  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const onChangeHandler = (e) => {
-    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
-  };
+  const {
+    onChangeHandler,
+    fieldErrors,
+    errorsDispatch,
+    onFocusClearError,
+    submitSignupForm,
+  } = useSignupHandler();
+  // const { authState, setAuthState } = useAuthContext();
+  // const [userInfo, setUserInfo] = useState({
+  //   firstName: "",
+  //   lastName: "",
+  //   email: "",
+  //   password: "",
+  // });
+  // const navigate = useNavigate();
 
-  const { firstName, lastName, email, password, confirmPassword } = userInfo;
+  // const onChangeHandler = (e) => {
+  //   setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+  // };
 
-  const postSignupData = async () => {
-    try {
-      const { data } = await axios.post(`/api/auth/signup`, {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-        confirmPassword: confirmPassword,
-      });
+  // const { firstName, lastName, email, password, confirmPassword } = userInfo;
 
-      localStorage.setItem("token", data.encodedToken);
-      setAuthState({
-        ...authState,
-        authToken: data.encodedToken,
-        authUser: data.foundUser,
-        loading: false,
-      });
-      navigate("/login");
-      toast.success(`Welcome, ${data.foundUser.firstName}`);
-    } catch (e) {
-      toast.error(e?.response?.data?.message);
-    }
-  };
+  // const postSignupData = async () => {
+  //   try {
+  //     const { data } = await axios.post(`/api/auth/signup`, {
+  //       firstName: firstName,
+  //       lastName: lastName,
+  //       email: email,
+  //       password: password,
+  //       confirmPassword: confirmPassword,
+  //     });
+
+  //     localStorage.setItem("token", data.encodedToken);
+  //     setAuthState({
+  //       ...authState,
+  //       authToken: data.encodedToken,
+  //       authUser: data.foundUser,
+  //       loading: false,
+  //     });
+  //     navigate("/login");
+  //     toast.success(`Welcome, ${data.foundUser.firstName}`);
+  //   } catch (e) {
+  //     toast.error(e?.response?.data?.message);
+  //   }
+  // };
 
   return (
-    <div>
+    <>
       <Header />
       <main className="main-container">
         <div className="form-container">
@@ -59,7 +67,7 @@ export function Signup() {
             <div className="row">
               <div className="column-30-pc">
                 <label
-                  for="first-name"
+                  htmlFor="first-name"
                   className="form-label text-bold-weight form-label-required-field"
                 >
                   First Name
@@ -72,15 +80,26 @@ export function Signup() {
                   placeholder="Enter your first name"
                   name="firstName"
                   onChange={onChangeHandler}
+                  onFocus={() => {
+                    onFocusClearError("SET_FIRSTNAME_ERROR");
+                  }}
                   required
                 />
+                {fieldErrors.firstnameError && (
+                  <div className="form-validation-msg">
+                    <span>
+                      <i className="fas fa-exclamation-circle"></i>
+                    </span>
+                    {fieldErrors.firstnameError}
+                  </div>
+                )}
               </div>
             </div>
 
             <div className="row">
               <div className="column-30-pc">
                 <label
-                  for="first-name"
+                  htmlFor="first-name"
                   className="form-label text-bold-weight form-label-required-field"
                 >
                   Last Name
@@ -93,15 +112,26 @@ export function Signup() {
                   placeholder="Enter your last name"
                   name="lastName"
                   onChange={onChangeHandler}
+                  onFocus={() => {
+                    onFocusClearError("SET_LASTNAME_ERROR");
+                  }}
                   required
                 />
+                {fieldErrors.lastnameError && (
+                  <div className="form-validation-msg">
+                    <span>
+                      <i className="fas fa-exclamation-circle"></i>
+                    </span>
+                    {fieldErrors.lastnameError}
+                  </div>
+                )}
               </div>
             </div>
 
             <div className="row">
               <div className="column-30-pc">
                 <label
-                  for="first-name"
+                  htmlFor="first-name"
                   className="form-label text-bold-weight form-label-required-field"
                 >
                   Email
@@ -114,61 +144,121 @@ export function Signup() {
                   placeholder="Enter your email"
                   name="email"
                   onChange={onChangeHandler}
+                  onFocus={() => {
+                    onFocusClearError("SET_EMAIL_ERROR");
+                  }}
                   required
                 />
+                {fieldErrors.emailError && (
+                  <div className="form-validation-msg">
+                    <span>
+                      <i className="fas fa-exclamation-circle"></i>
+                    </span>
+                    {fieldErrors.emailError}
+                  </div>
+                )}
               </div>
             </div>
 
             <div className="row">
               <div className="column-30-pc">
                 <label
-                  for="first-name"
+                  htmlFor="first-name"
                   className="form-label text-bold-weight form-label-required-field"
                 >
                   Password
                 </label>
               </div>
               <div className="column-70-pc">
-                <input
-                  className="form-field"
-                  type="password"
-                  placeholder="Enter password"
-                  name="password"
-                  onChange={onChangeHandler}
-                  required
-                />
+                <span className="input-with-eye-container">
+                  <input
+                    className="form-field"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Enter password"
+                    name="password"
+                    onChange={onChangeHandler}
+                    onFocus={() => {
+                      onFocusClearError("SET_PASSWORD_ERROR");
+                    }}
+                    required
+                  />
+                  {showPassword ? (
+                    <BiShow
+                      className="eye-container"
+                      onClick={() => setShowPassword(false)}
+                    />
+                  ) : (
+                    <BiHide
+                      className="eye-container"
+                      onClick={() => setShowPassword(true)}
+                    />
+                  )}
+                </span>
+
+                {fieldErrors.passwordError && (
+                  <div className="form-validation-msg">
+                    <span>
+                      <i className="fas fa-exclamation-circle"></i>
+                    </span>
+                    {fieldErrors.passwordError}
+                  </div>
+                )}
               </div>
             </div>
 
             <div className="row">
               <div className="column-30-pc">
                 <label
-                  for="first-name"
+                  htmlFor="first-name"
                   className="form-label text-bold-weight form-label-required-field"
                 >
                   Confirm Password
                 </label>
               </div>
               <div className="column-70-pc">
-                <input
-                  className="form-field"
-                  type="password"
-                  placeholder="Re-type password"
-                  name="confirmPassword"
-                  onChange={onChangeHandler}
-                  required
-                />
+                <span className="input-with-eye-container">
+                  <input
+                    className="form-field"
+                    type={showConfirmPassword ? "text" : "password"}
+                    placeholder="Re-type password"
+                    name="confirmPassword"
+                    onChange={onChangeHandler}
+                    onFocus={() => {
+                      onFocusClearError("SET_RE_PASSWORD_ERROR");
+                    }}
+                    required
+                  />
+                  {showConfirmPassword ? (
+                    <BiShow
+                      className="eye-container"
+                      onClick={() => setShowConfirmPassword(false)}
+                    />
+                  ) : (
+                    <BiHide
+                      className="eye-container"
+                      onClick={() => setShowConfirmPassword(true)}
+                    />
+                  )}
+                </span>
+
+                {fieldErrors.confirmPasswordError && (
+                  <div className="form-validation-msg">
+                    <span>
+                      <i className="fas fa-exclamation-circle"></i>
+                    </span>
+                    Password does not match
+                  </div>
+                )}
               </div>
             </div>
 
             <button
               className="btn primary-btn text-center"
               type="submit"
-              onClick={postSignupData}
+              onClick={submitSignupForm}
             >
               REGISTER
             </button>
-
             <div className="py-16">
               Already registered?
               <Link to="/login" className="link-btn">
@@ -178,6 +268,6 @@ export function Signup() {
           </form>
         </div>
       </main>
-    </div>
+    </>
   );
 }
