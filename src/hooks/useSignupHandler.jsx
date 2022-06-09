@@ -54,7 +54,6 @@ export const useSignupHandler = () => {
       navigate("/");
       toast.success(`Welcome, ${data.createdUser.firstName}`);
     } catch (e) {
-      console.log(e);
       toast.error(`Please try again, ${e?.response?.data?.message}`);
     }
   };

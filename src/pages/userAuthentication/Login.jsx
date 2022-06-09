@@ -46,7 +46,6 @@ export function Login() {
       setLoginError(
         `Please signup if you don't have an account, ${e?.response?.data?.errors[0]}`
       );
-      console.log(e?.response?.data?.errors[0]);
       toast.error(e?.response?.data?.errors[0]);
     }
   };
