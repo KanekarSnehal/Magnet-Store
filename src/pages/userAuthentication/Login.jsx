@@ -1,23 +1,28 @@
 import React from "react";
 import { useState } from "react";
-import { Header } from "../../components/index";
+import { Header, Loader } from "../../components/index";
 import "./auth.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuthContext } from "../../context/index";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export function Login() {
   const { authState, setAuthState } = useAuthContext();
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
+  const [loginError, setLoginError] = useState(null);
   const navigate = useNavigate();
-
+  const location = useLocation();
   const onChangeHandler = (e) => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
 
   const postLoginData = async (e) => {
     e.preventDefault();
+    if (userInfo.email.length === 0 || userInfo.password.length === 0) {
+      setLoginError("Email or/and password cannot be empty");
+      return;
+    }
     try {
       setAuthState({
         ...authState,
@@ -36,8 +41,12 @@ export function Login() {
         loading: false,
       });
       navigate("/");
-    } catch (error) {
-      console.log(error);
+      toast.success(`Welcome back, ${data.foundUser.firstName}`);
+    } catch (e) {
+      setLoginError(
+        `Please signup if you don't have an account, ${e?.response?.data?.errors[0]}`
+      );
+      toast.error(e?.response?.data?.errors[0]);
     }
   };
   const handleTestLogin = async (e) => {
@@ -60,12 +69,14 @@ export function Login() {
         loading: false,
       });
       navigate("/");
-    } catch (error) {
-      console.log(error);
+      toast.success(`Welcome back, ${data.foundUser.firstName}`);
+    } catch (e) {
+      toast.error(e?.response?.data?.message);
     }
   };
+
   return (
-    <div>
+    <>
       <Header />
       <main className="main-container">
         <div className="form-container">
@@ -80,6 +91,7 @@ export function Login() {
                 placeholder="Enter your email here"
                 name="email"
                 onChange={onChangeHandler}
+                onFocus={() => setLoginError(null)}
                 required
               />
             </div>
@@ -91,6 +103,7 @@ export function Login() {
                 placeholder="Enter your password"
                 name="password"
                 onChange={onChangeHandler}
+                onFocus={() => setLoginError(null)}
                 required
               />
             </div>
@@ -108,6 +121,14 @@ export function Login() {
             >
               LOGIN
             </button>
+            {loginError && (
+              <div className="form-validation-msg">
+                <span>
+                  <i className="fas fa-exclamation-circle mx-8"></i>
+                </span>
+                {loginError}
+              </div>
+            )}
 
             <div className="py-16">
               Not a user yet?
@@ -118,6 +139,6 @@ export function Login() {
           </form>
         </div>
       </main>
-    </div>
+    </>
   );
 }

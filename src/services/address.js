@@ -1,6 +1,7 @@
 import { addressUrl, getConfig } from "./helpers";
 import axios from "axios";
 import { addressConstants } from "../reducer";
+import toast from "react-hot-toast";
 
 export const getAddresses = (userDispatch) => {
   try {
@@ -12,7 +13,7 @@ export const getAddresses = (userDispatch) => {
     });
     userDispatch({ type: addressConstants.ADDRESS_LOADING });
   } catch (e) {
-    console.log(e);
+    toast.error(e?.response?.data?.message);
   }
 };
 
@@ -27,8 +28,9 @@ export const addAddress = async (address, userDispatch) => {
       type: addressConstants.ADD_ADDRESS,
       payload: data.addressList,
     });
+    toast.success("New Address addded!");
   } catch (e) {
-    console.log(e);
+    toast.error(e?.response?.data?.message);
   }
 };
 
@@ -42,8 +44,9 @@ export const removeAddress = async (addressId, userDispatch) => {
       type: addressConstants.REMOVE_ADDRESS,
       payload: data.addressList,
     });
+    toast.success("Address removed!");
   } catch (e) {
-    console.log(e);
+    toast.error(e?.response?.data?.message);
   }
 };
 
@@ -58,7 +61,8 @@ export const updateAddress = async (addressId, address, userDispatch) => {
       type: addressConstants.UPDATE_ADDRESS,
       payload: data.addressList,
     });
+    toast.success("Address updated!");
   } catch (e) {
-    console.log(e);
+    toast.error(e?.response?.data?.message);
   }
 };

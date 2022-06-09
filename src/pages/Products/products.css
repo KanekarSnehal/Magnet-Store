@@ -9,10 +9,12 @@
 }
 
 .products-container {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(20rem,1fr));
+  justify-content: center;
   gap: 2rem;
+  padding: 0.5rem 2rem 0 2rem;
+  margin: 1.5rem 0;
 }
 
 .vertical-card-container .card-content{
@@ -21,7 +23,7 @@
 
 .vertical-card-container {
   margin: 0;
-  width: 20rem;
+  width: 100%;
 }
 
 .paginate-container{
@@ -35,6 +37,20 @@
   border-radius: 0.5rem;
   padding: 0.2rem 0.6rem;
   margin: 0.2rem 0.5rem;
+}
+
+.card-title{
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.text-bold-weight{
+  margin-top: 0.2rem;
+}
+
+.vertical-card-container .card-image {
+  height: 15rem;
 }
 
 @media screen and (max-width:976px){

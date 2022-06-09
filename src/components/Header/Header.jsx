@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useUserData, useFilter } from "../../context";
 import "./header.css";
+import { useDocumentTitle } from "../../hooks";
 
 export function Header() {
   const { filterDispatch } = useFilter();
@@ -15,6 +16,7 @@ export function Header() {
   const [showSideMenu, setShowSideMenu] = useState(false);
 
   const location = useLocation();
+  useDocumentTitle();
 
   return (
     <header className="header-container">

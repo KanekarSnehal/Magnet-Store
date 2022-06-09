@@ -1,6 +1,7 @@
 import { cartUrl, getConfig } from "./helpers";
 import { cartConstants } from "../reducer";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export const addToCart = async (product, userDispatch) => {
   try {
@@ -9,8 +10,9 @@ export const addToCart = async (product, userDispatch) => {
       type: cartConstants.ADD_TO_CART,
       payload: data.cart,
     });
+    toast.success("Added to cart!");
   } catch (e) {
-    console.log(e);
+    toast.error(e?.response?.data?.message);
   }
 };
 
@@ -21,8 +23,9 @@ export const removeFromCart = async (id, userDispatch) => {
       type: cartConstants.REMOVE_FROM_CART,
       payload: data.cart,
     });
+    toast.success("Removed to cart!");
   } catch (e) {
-    console.log(e);
+    toast.error(e?.response?.data?.message);
   }
 };
 
@@ -38,7 +41,7 @@ export const incrementCartItem = async (id, userDispatch) => {
       payload: data.cart,
     });
   } catch (e) {
-    console.log(e);
+    toast.error(e?.response?.data?.message);
   }
 };
 
@@ -53,7 +56,9 @@ export const decrementCartItem = async (id, userDispatch) => {
       type: cartConstants.DECREMENT_CART_ITEM,
       payload: data.cart,
     });
-  } catch (error) {}
+  } catch (e) {
+    toast.error(e?.response?.data?.message);
+  }
 };
 
 export const clearCart = async (userDispatch) => {
@@ -63,7 +68,8 @@ export const clearCart = async (userDispatch) => {
       type: cartConstants.CLEAR_CART,
       payload: data.cart,
     });
+    toast.success("Cleared cart!");
   } catch (e) {
-    console.log(e);
+    toast.error(e?.response?.data?.message);
   }
 };

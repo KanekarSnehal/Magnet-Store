@@ -1,10 +1,10 @@
-import React, { useReducer } from "react";
+import { useReducer } from "react";
 import { addAddress, updateAddress } from "../services/address";
 import { useUserData, useAddress } from "../context";
 
 export const useAddressHandler = () => {
   const { userDispatch } = useUserData();
-  const { setShowAddressModal, editAddress, setEditAddress } = useAddress();
+  const { editAddress, setEditAddress } = useAddress();
 
   const initialState = {
     name: "",
@@ -102,6 +102,15 @@ export const useAddressHandler = () => {
         return {
           ...state,
           mobile: action.payload,
+        };
+      case "CLEAR_ERROR":
+        return {
+          name: "",
+          street: "",
+          city: "",
+          state: "",
+          zipCode: "",
+          mobile: "",
         };
     }
   };
