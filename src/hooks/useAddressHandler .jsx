@@ -103,6 +103,15 @@ export const useAddressHandler = () => {
           ...state,
           mobile: action.payload,
         };
+      case "CLEAR_ERROR":
+        return {
+          name: "",
+          street: "",
+          city: "",
+          state: "",
+          zipCode: "",
+          mobile: "",
+        };
     }
   };
 

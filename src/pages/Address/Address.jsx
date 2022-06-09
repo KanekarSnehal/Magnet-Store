@@ -13,16 +13,16 @@ export const Address = () => {
 
   return (
     <div className="address-page-container">
-      {addresses &&
-        addresses.map((address) => (
-          <AddressCard address={address} key={address._id} />
-        ))}
       <button
         className="btn primary-btn"
         onClick={() => setShowAddressModal(true)}
       >
         + ADD ADDRESS
       </button>
+      {addresses &&
+        addresses.map((address) => (
+          <AddressCard address={address} key={address._id} />
+        ))}
       {showAddressModal && <AddressForm />}
     </div>
   );
