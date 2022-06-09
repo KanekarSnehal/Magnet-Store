@@ -21,6 +21,10 @@ export const AddressForm = () => {
     }
   }, []);
 
+  const onFocusClearError = (type) => {
+    errorDispatch({ type, payload: "" });
+  };
+
   return (
     <div className="overlay" onClick={() => setShowAddressModal(false)}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
@@ -40,7 +44,7 @@ export const AddressForm = () => {
               onChange={(e) =>
                 formDispatch({ type: "INPUT_NAME", payload: e.target.value })
               }
-              onFocus={() => errorDispatch({ type: "ERROR_NAME", payload: "" })}
+              onFocus={() => onFocusClearError("ERROR_NAME")}
             />
             {errorData.name.length > 0 && (
               <div className="error-message">
@@ -61,9 +65,7 @@ export const AddressForm = () => {
                   payload: e.target.value,
                 })
               }
-              onFocus={() =>
-                errorDispatch({ type: "ERROR_STREET", payload: "" })
-              }
+              onFocus={() => onFocusClearError("ERROR_STREET")}
             />
             {errorData.street.length > 0 && (
               <div className="error-message">
@@ -81,7 +83,7 @@ export const AddressForm = () => {
               onChange={(e) =>
                 formDispatch({ type: "INPUT_CITY", payload: e.target.value })
               }
-              onFocus={() => errorDispatch({ type: "ERROR_CITY", payload: "" })}
+              onFocus={() => onFocusClearError("ERROR_CITY")}
             />
             {errorData.city.length > 0 && (
               <div className="error-message">
@@ -117,9 +119,7 @@ export const AddressForm = () => {
                   payload: e.target.value,
                 })
               }
-              onFocus={() =>
-                errorDispatch({ type: "ERROR_ZIPCODE", payload: "" })
-              }
+              onFocus={() => onFocusClearError("ERROR_ZIPCODE")}
             />
             {errorData.zipCode.length > 0 && (
               <div className="error-message">
@@ -142,9 +142,7 @@ export const AddressForm = () => {
                   payload: e.target.value,
                 })
               }
-              onFocus={() =>
-                errorDispatch({ type: "ERROR_MOBILE", payload: "" })
-              }
+              onFocus={() => onFocusClearError("ERROR_MOBILE")}
             />
             {errorData.mobile.length > 0 && (
               <div className="error-message">
