@@ -2,19 +2,18 @@ import React, { useEffect } from "react";
 import "./profile-details.css";
 import { useAuthContext } from "../../context";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export const ProfileDetails = () => {
-  const {
-    authState: { authUser },
-    setAuthState,
-  } = useAuthContext();
-
+  const { authState, setAuthState } = useAuthContext();
+  const { authUser } = authState;
   const navigate = useNavigate();
   const logoutHandler = () => {
     localStorage.removeItem("magnetStoreToken");
     localStorage.removeItem("magnetStoreUser");
     setAuthState({ ...authState, authToken: null, authUser: null });
     navigate("/");
+    toast.success(`Logged Out Successfully`);
   };
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import { useState, useReducer } from "react";
 import axios from "axios";
 import { useAuthContext } from "../context";
 import { useNavigate } from "react-router-dom";
@@ -21,7 +21,6 @@ export const useSignupHandler = () => {
 
   const postSignupData = async () => {
     const { firstName, lastName, email, password, confirmPassword } = userInfo;
-    console.log(userInfo);
     try {
       setAuthState({
         ...authState,
@@ -34,7 +33,6 @@ export const useSignupHandler = () => {
         password,
         confirmPassword,
       });
-      console.log(data.createdUser.firstName);
 
       localStorage.setItem("magnetStoreToken", data.encodedToken);
 

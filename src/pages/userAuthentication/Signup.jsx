@@ -16,44 +16,6 @@ export function Signup() {
     onFocusClearError,
     submitSignupForm,
   } = useSignupHandler();
-  // const { authState, setAuthState } = useAuthContext();
-  // const [userInfo, setUserInfo] = useState({
-  //   firstName: "",
-  //   lastName: "",
-  //   email: "",
-  //   password: "",
-  // });
-  // const navigate = useNavigate();
-
-  // const onChangeHandler = (e) => {
-  //   setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
-  // };
-
-  // const { firstName, lastName, email, password, confirmPassword } = userInfo;
-
-  // const postSignupData = async () => {
-  //   try {
-  //     const { data } = await axios.post(`/api/auth/signup`, {
-  //       firstName: firstName,
-  //       lastName: lastName,
-  //       email: email,
-  //       password: password,
-  //       confirmPassword: confirmPassword,
-  //     });
-
-  //     localStorage.setItem("token", data.encodedToken);
-  //     setAuthState({
-  //       ...authState,
-  //       authToken: data.encodedToken,
-  //       authUser: data.foundUser,
-  //       loading: false,
-  //     });
-  //     navigate("/login");
-  //     toast.success(`Welcome, ${data.foundUser.firstName}`);
-  //   } catch (e) {
-  //     toast.error(e?.response?.data?.message);
-  //   }
-  // };
 
   return (
     <>
