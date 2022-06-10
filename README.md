@@ -1,13 +1,22 @@
-#### (Mangnet Store)
-
 <div align="center">
   <img src="public/icon.png" width="150" title="Magnet Store Logo">
 
-## [Magnet Store](https://magnet-store.netlify.app/)
+# [Magnet Store](https://magnet-store.netlify.app/)
 
-E-commerce application for Crockery.
+Magnet Store is created to provide a hub to all the crockery products. The products available are of a wide variety starting from bowls and glasses to dinner sets for a whole family. All the major brands in the market are available and at affordable price.
 
 </div>
+
+---
+
+## How to run the app locally?
+
+```
+$ git clone https://github.com/KanekarSnehal/Magnet-Store.git
+$ cd Magnet-Store
+$ npm install
+$ npm start
+```
 
 ---
 
@@ -17,12 +26,14 @@ Checkout the live demo [here](https://magnet-store.netlify.app/)
 
 ---
 
-## Built With
+## Tech Stack and Tools
 
-- React JS v17.0.2
+- React JS 
 - React Router v6
+- React Context API + useReducer
 - MagnetUI Component Library
-- JavaScript
+- Netlify for Deployment
+- Cloudinary for Hosting of Images
 
 ---
 
