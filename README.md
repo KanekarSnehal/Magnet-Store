@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/icon.png" width="150" title="Magnet Store Logo">
 
-# [Magnet Store](https://magnet-store.netlify.app/)
+# [Magnet Store](https://magnet-store.vercel.app/)
 
 Magnet Store is created to provide a hub to all the crockery products. The products available are of a wide variety starting from bowls and glasses to dinner sets for a whole family. All the major brands in the market are available and at affordable price.
 
@@ -22,13 +22,13 @@ $ npm start
 
 ## Deployed Link
 
-Checkout the live demo [here](https://magnet-store.netlify.app/)
+Checkout the live demo [here](https://magnet-store.vercel.app/)
 
 ---
 
 ## Tech Stack and Tools
 
-- React JS 
+- React JS
 - React Router v6
 - React Context API + useReducer
 - MagnetUI Component Library
