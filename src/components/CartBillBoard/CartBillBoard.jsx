@@ -16,11 +16,7 @@ export function CartBillBoard() {
   return (
     <>
       <div className="cart-price-container">
-        <p>COUPONS</p>
-        <button className="btn outline-secondary-btn">
-          <i className="fas fa-tag mr-16"></i>Apply Coupon
-        </button>
-        <div className="text-bold-weight my-16">
+        <div className="text-bold-weight my-16 p-rg">
           PRICE DETAILS: ({quantity} items)
         </div>
         <div className="price-items">
