@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useUserData, useFilter } from "../../context";
 import "./header.css";
 import { useDocumentTitle } from "../../hooks";
+import logo from "../../assets/icon.png";
 
 export function Header() {
   const { filterDispatch } = useFilter();
@@ -21,7 +22,7 @@ export function Header() {
   return (
     <header className="header-container">
       <Link to="/" className="logo-container">
-        <img src="icon.png" alt="logo" className="brand-logo" />
+        <img src={logo} alt="logo" className="brand-logo" />
         <span className="brand-name">Magnet Store </span>
       </Link>
       <div className="header-links mx-auto">
