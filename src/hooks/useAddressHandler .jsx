@@ -4,7 +4,7 @@ import { useUserData, useAddress } from "../context";
 
 export const useAddressHandler = () => {
   const { userDispatch } = useUserData();
-  const { editAddress, setEditAddress } = useAddress();
+  const { editAddress, setEditAddress, setShowAddressModal } = useAddress();
 
   const initialState = {
     name: "",
@@ -175,13 +175,19 @@ export const useAddressHandler = () => {
   };
 
   const addAddressHandler = () => {
-    checkValidation() && addAddress(formData, userDispatch);
-    formDispatch({ type: "SET_INITIAL_VALUE" });
+    if (checkValidation()) {
+      addAddress(formData, userDispatch);
+      formDispatch({ type: "SET_INITIAL_VALUE" });
+      setShowAddressModal(false);
+    }
   };
 
   const editAddressHandler = () => {
-    checkValidation && updateAddress(editAddress._id, formData, userDispatch);
-    setEditAddress(null);
+    if (checkValidation()) {
+      updateAddress(editAddress._id, formData, userDispatch);
+      setEditAddress(null);
+      setShowAddressModal(false);
+    }
   };
 
   return {
