@@ -103,7 +103,7 @@ export const SingleProductPage = () => {
               >
                 Go to cart
               </button>
-            ) : (
+            ) : singleProduct.inStock ? (
               <button
                 className="btn primary-btn mr-16"
                 onClick={() => {
@@ -113,6 +113,10 @@ export const SingleProductPage = () => {
                 }}
               >
                 <i className="fas fa-shopping-cart mr-16 "></i>Add to cart
+              </button>
+            ) : (
+              <button className="btn primary-btn mr-16" disabled>
+                <i className="fas fa-shopping-cart mr-16 "></i>Out of Stock
               </button>
             )}
 
