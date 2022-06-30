@@ -16,7 +16,6 @@ export const addItemToOrders = async (order, userDispatch) => {
     const { data } = await axios.post(ordersUrl, { order }, getConfig());
     userDispatch({ type: "ADD_ORDER_ITEM", payload: data.orders });
     toast.success("Yayyy! Order confirmed succesfully");
-    console.log(data.orders);
   } catch (e) {
     toast.error(e?.response?.data?.message);
   }

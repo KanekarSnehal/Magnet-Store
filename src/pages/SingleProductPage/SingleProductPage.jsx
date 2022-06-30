@@ -6,6 +6,7 @@ import axios from "axios";
 import { useAuthContext, useUserData } from "../../context/index";
 import { addToWishlist, removeFromWishlist, addToCart } from "../../services";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export const SingleProductPage = () => {
   const { productId } = useParams();
@@ -31,7 +32,7 @@ export const SingleProductPage = () => {
         setSingleProduct(data.product);
         setLoading(false);
       } catch (e) {
-        console.log(e);
+        toast.error(e?.response?.data?.message);
       }
     })();
   }, [productId]);

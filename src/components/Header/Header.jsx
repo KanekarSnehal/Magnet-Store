@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
-import { useUserData, useFilter } from "../../context";
+import { useUserData, useFilter, useAuthContext } from "../../context";
 import "./header.css";
 import { useDocumentTitle } from "../../hooks";
 import logo from "../../assets/icon.png";
@@ -13,6 +13,9 @@ export function Header() {
       userCart: { cart },
     },
   } = useUserData();
+  const {
+    authState: { authToken },
+  } = useAuthContext();
   const navigate = useNavigate();
   const [showSideMenu, setShowSideMenu] = useState(false);
 
@@ -80,7 +83,7 @@ export function Header() {
             ></i>
           </Link>
           <div className="badge badge-status-busy badge-md-size badge-number">
-            {wishlist?.length}
+            {authToken ? wishlist?.length : 0}
           </div>
         </div>
 
@@ -95,7 +98,7 @@ export function Header() {
             ></i>
           </Link>
           <div className="badge badge-status-busy badge-md-size badge-number">
-            {cart?.length}
+            {authToken ? cart?.length : 0}
           </div>
         </div>
       </div>
