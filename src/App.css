@@ -115,3 +115,16 @@ li{
 .disabled-cursor{
   cursor: not-allowed;
 }
+
+.empty-state{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem;
+}
+
+.img-404{
+  width: 80%;
+}

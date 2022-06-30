@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/icon.png" width="150" title="Magnet Store Logo">
+  <img src="src/assets/icon.png" width="150" title="Magnet Store Logo">
 
 # [Magnet Store](https://magnet-store.vercel.app/)
 
@@ -34,6 +34,7 @@ Checkout the live demo [here](https://magnet-store.vercel.app/)
 - MagnetUI Component Library
 - Netlify for Deployment
 - Cloudinary for Hosting of Images
+- Razorpay for Payment Integration
 
 ---
 
@@ -41,10 +42,14 @@ Checkout the live demo [here](https://magnet-store.vercel.app/)
 
 - Home page with featured categories and brands
 - Product listing page
+- Pagination on Product listing page
 - Various Filter for products
 - Search product
 - Cart Management
 - Wishlist Management
+- Order Management
+- Checkout Page
+- Razorpay Payment Integration
 - User Authentication - Signup and Login pages
 
 ---
