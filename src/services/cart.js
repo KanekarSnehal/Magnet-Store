@@ -73,3 +73,15 @@ export const clearCart = async (userDispatch) => {
     toast.error(e?.response?.data?.message);
   }
 };
+
+export const getCart = async (userDispatch) => {
+  try {
+    const { data } = await axios.post(`${cartUrl}`, getConfig());
+    userDispatch({
+      type: cartConstants.GET_CART,
+      payload: data.cart,
+    });
+  } catch (e) {
+    toast.error(e?.response?.data?.message);
+  }
+};

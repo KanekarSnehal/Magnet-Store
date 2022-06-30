@@ -5,6 +5,7 @@ import "./checkout.css";
 import { cartDetailsCalculator } from "../../components/CartBillBoard/helper";
 import { useNavigate } from "react-router-dom";
 import { usePaymentIntegration } from "../../hooks";
+import toast from "react-hot-toast";
 
 export const Checkout = () => {
   const {
@@ -19,8 +20,11 @@ export const Checkout = () => {
   const totalAmount = totalMRP - discountOnMRP;
   const navigate = useNavigate();
   const { displayRazorpay } = usePaymentIntegration();
+
   const placeOrderHanlder = () => {
-    orderAddress ? displayRazorpay() : alert("Please select order address");
+    orderAddress
+      ? displayRazorpay()
+      : toast.error("Please select delivery address");
   };
 
   return (

@@ -19,7 +19,7 @@ export function Cart() {
         {loading ? (
           <Loader />
         ) : cart.length === 0 ? (
-          <h1 className="text-center">No products added...</h1>
+          <h4 className="text-center">No products added...</h4>
         ) : (
           <div className="cart-container">
             <div className="cart-item-container mr-16">

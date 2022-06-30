@@ -34,10 +34,10 @@ export function CartItems({ cartItem }) {
           <span className="primary-text-color">{cartItem.discount}%</span>
         </span>
         <div
-          className="badge badge-number "
+          className="card-badge-dismiss cursor-pointer"
           onClick={() => removeFromCart(cartItem._id, userDispatch)}
         >
-          <i className="fa-solid fa-xmark number-badge-iframe badge-lg-size"></i>
+          <i className="fas fa-times"></i>
         </div>
         <div className="btn-container p-sm">
           {cartItem.qty <= 1 ? (

@@ -157,7 +157,6 @@ export const AddressForm = () => {
               className="btn primary-btn"
               onClick={() => {
                 editAddress ? editAddressHandler() : addAddressHandler();
-                setShowAddressModal(false);
               }}
             >
               Save

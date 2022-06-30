@@ -36,14 +36,7 @@ export const useSignupHandler = () => {
 
       localStorage.setItem("magnetStoreToken", data.encodedToken);
 
-      localStorage.setItem(
-        "magnetStoreUser",
-        JSON.stringify({
-          firstName: data.createdUser.firstName,
-          lastName: data.createdUser.lastName,
-          email: data.createdUser.email,
-        })
-      );
+      localStorage.setItem("magnetStoreUser", JSON.stringify(data.createdUser));
 
       setAuthState({
         ...authState,

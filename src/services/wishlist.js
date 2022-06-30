@@ -3,15 +3,13 @@ import { getConfig, wishlistUrl } from "./helpers";
 import { wishlistConstants } from "../reducer";
 import toast from "react-hot-toast";
 
-export const getWishlist = (userDispatch) => {
+export const getWishlist = async (userDispatch) => {
   try {
-    userDispatch({ type: wishlistConstants.WISHLIST_LOADING });
-    const { data } = axios.get(wishlistUrl, getConfig());
+    const { data } = await axios.get(wishlistUrl, getConfig());
     userDispatch({
       type: wishlistConstants.GET_WISHLIST,
       payload: data.wishlist,
     });
-    userDispatch({ type: wishlistConstants.WISHLIST_LOADING });
   } catch (e) {
     toast.error(e?.response?.data?.message);
   }

@@ -6,6 +6,7 @@ import axios from "axios";
 import { useAuthContext, useUserData } from "../../context/index";
 import { addToWishlist, removeFromWishlist, addToCart } from "../../services";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export const SingleProductPage = () => {
   const { productId } = useParams();
@@ -31,7 +32,7 @@ export const SingleProductPage = () => {
         setSingleProduct(data.product);
         setLoading(false);
       } catch (e) {
-        console.log(e);
+        toast.error(e?.response?.data?.message);
       }
     })();
   }, [productId]);
@@ -103,7 +104,7 @@ export const SingleProductPage = () => {
               >
                 Go to cart
               </button>
-            ) : (
+            ) : singleProduct.inStock ? (
               <button
                 className="btn primary-btn mr-16"
                 onClick={() => {
@@ -113,6 +114,10 @@ export const SingleProductPage = () => {
                 }}
               >
                 <i className="fas fa-shopping-cart mr-16 "></i>Add to cart
+              </button>
+            ) : (
+              <button className="btn primary-btn mr-16" disabled>
+                <i className="fas fa-shopping-cart mr-16 "></i>Out of Stock
               </button>
             )}
 

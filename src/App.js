@@ -13,6 +13,7 @@ import {
   Address,
   Orders,
   Checkout,
+  EmptyState,
 } from "./pages/index";
 import Mockman from "mockman-js";
 import { ProtectedRoute } from "./utilities/routes";
@@ -52,6 +53,7 @@ function App() {
           <Route path="/product/:productId" element={<SingleProductPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="*" element={<EmptyState />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/cart" element={<Cart />} />
             <Route path="/wishlist" element={<Whishlist />} />
