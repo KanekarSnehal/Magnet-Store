@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./products.css";
-import ProductsCards from "../../components/Cards/ProductsCards";
+import { ProductsCards } from "../../components";
 import ProductsFilter from "../../components/ProductsFilter/ProductsFilter";
 import { Header, Loader } from "../../components/index";
 import { useFilter, useData } from "../../context/index";

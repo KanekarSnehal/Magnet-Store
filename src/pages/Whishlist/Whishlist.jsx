@@ -1,5 +1,5 @@
 import React from "react";
-import { WishlistItems, Header, Loader } from "../../components/index";
+import { ProductsCards, Header, Loader } from "../../components";
 import { useUserData } from "../../context";
 
 export function Whishlist() {
@@ -21,10 +21,7 @@ export function Whishlist() {
         ) : (
           <div className="products-container">
             {wishlist.map((wishlistItem) => (
-              <WishlistItems
-                key={wishlistItem._id}
-                wishlistItem={wishlistItem}
-              />
+              <ProductsCards key={wishlistItem._id} product={wishlistItem} />
             ))}
           </div>
         )}

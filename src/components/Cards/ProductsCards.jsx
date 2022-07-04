@@ -3,7 +3,7 @@ import { useUserData, useAuthContext } from "../../context/index";
 import { addToWishlist, removeFromWishlist, addToCart } from "../../services";
 import { useNavigate } from "react-router-dom";
 
-export default function ProductsCards({ product }) {
+export function ProductsCards({ product }) {
   const {
     userState: {
       userWishlist: { wishlist },
